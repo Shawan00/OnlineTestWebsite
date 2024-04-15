@@ -52,8 +52,6 @@ function addQuestion(event) {
 }
 
 
-document.getElementById("addButton").addEventListener("click", addQuestion);
-
 function saveQuestions() {
     var examId = document.getElementById("submitButton").dataset.examId;
     // Tạo một mảng chứa các câu hỏi
@@ -83,9 +81,6 @@ function saveQuestions() {
             // Nếu yêu cầu thành công, chuyển hướng trang web
             window.location.href = `/admin/exam/update/question/${examId}`;
             taoThanhCong();
-        } else {
-            // Nếu có lỗi, hiển thị thông báo hoặc xử lý lỗi khác
-            console.error('Có lỗi xảy ra.');
         }
     })
     .catch(error => {
@@ -93,3 +88,4 @@ function saveQuestions() {
         console.error('Error:', error);
     });
 }
+

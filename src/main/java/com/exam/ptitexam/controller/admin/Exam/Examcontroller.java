@@ -76,6 +76,7 @@ public class Examcontroller {
 
     @PostMapping("/admin/exam/delete")
     public String postDeletEexam(Model model, @ModelAttribute("newExam") Exam exam){
+
         this.examService.deleteExamById(exam.getId());
         
         return "redirect:/admin/exam";

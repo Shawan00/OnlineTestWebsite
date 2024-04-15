@@ -16,7 +16,10 @@ function updateCountdown() {
         const minutes = Math.floor(timeDifference / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-        document.getElementById('countdown').innerHTML = `${minutes} : ${seconds}`;
+        const formattedMinutes = addLeadingZero(minutes);
+        const formattedSeconds = addLeadingZero(seconds);
+
+        document.getElementById('countdown').innerHTML = `${formattedMinutes} : ${formattedSeconds}`;
     }
 }
 
