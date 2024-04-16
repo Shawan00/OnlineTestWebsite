@@ -1,0 +1,64 @@
+package com.exam.ptitexam.exceptions;
+
+import org.springframework.http.HttpStatus;
+
+public class InternalServerException extends RuntimeException {
+
+  private String message;
+
+  private HttpStatus status;
+
+  private String[] params;
+
+  @Override
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public HttpStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(HttpStatus status) {
+    this.status = status;
+  }
+
+  public String[] getParams() {
+    return params;
+  }
+
+  public void setParams(String[] params) {
+    this.params = params;
+  }
+
+  public InternalServerException(String message) {
+    super(message);
+    this.status = HttpStatus.INTERNAL_SERVER_ERROR;
+    this.message = message;
+  }
+
+  public InternalServerException(HttpStatus status, String message) {
+    super(message);
+    this.status = status;
+    this.message = message;
+  }
+
+  public InternalServerException(String message, String[] params) {
+    super(message);
+    this.status = HttpStatus.INTERNAL_SERVER_ERROR;
+    this.message = message;
+    this.params = params;
+  }
+
+  public InternalServerException(HttpStatus status, String message, String[] params) {
+    super(message);
+    this.status = status;
+    this.message = message;
+    this.params = params;
+  }
+
+}
