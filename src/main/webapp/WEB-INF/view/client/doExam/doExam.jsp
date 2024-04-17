@@ -38,86 +38,107 @@
         <h3>Chọn đáp án đúng nhất cho mỗi câu hỏi dưới đây</h3>
       </div>
       
-      <div class="card-body">
-        <% int index = 0; %>
-        <c:forEach items="${questions}" var="question">
-            <% index++; %>
+      <form:form method="post" action="/doExam/examResult" modelAttribute="questionListWrapper">
+
+        <div class="card-body">
+          <c:forEach items="${questionListWrapper.questions}" var="question" varStatus="status">
+            <div style="display: none">
+              <form:input path="questions[${status.index}].exam" value="${examId}"/>
+            </div>
 
             <p>
-                <strong>Câu <%=index%>:</strong> ${question.questionContent}
+              <strong>Câu ${status.index +1}:</strong> ${question.questionContent}
+              <div style="display: none">
+                <form:input path="questions[${status.index}].questionContent" value="${question.questionContent}"/>
+              </div>
             </p>
 
             <div class="form-check">
               <input
-                class="form-check-input"
-                type="radio"
-                name="Cau<%=index%>"
-                id="Cau<%=index%>.1"
-                value="1"
+                      class="form-check-input"
+                      type="radio"
+                      name="questions[${status.index}].selectedOptionIndex"
+                      id="Cau${status.index + 1}1"
+                      value="1"
               />
-              <label class="form-check-label" for="Cau<%=index%>"> A. </label> ${question.optionA}
+              <label class="form-check-label" for="Cau${status.index + 1}"> A. </label> ${question.optionA}
+              <div style="display: none">
+                <form:input path="questions[${status.index}].optionA" value="${question.optionA}"/>
+              </div>
             </div>
 
             <div class="form-check">
               <input
-                class="form-check-input"
-                type="radio"
-                name="Cau<%=index%>"
-                id="Cau<%=index%>.2"
-                value="2"
+                      class="form-check-input"
+                      type="radio"
+                      name="questions[${status.index}].selectedOptionIndex"
+                      id="Cau${status.index + 1}.2"
+                      value="2"
               />
-              <label class="form-check-label" for="Cau<%=index%>"> B. </label> ${question.optionB}
+              <label class="form-check-label" for="Cau${status.index + 1}"> B. </label> ${question.optionB}
+              <div style="display: none">
+                <form:input path="questions[${status.index}].optionB" value="${question.optionB}"/>
+              </div>
             </div>
 
             <div class="form-check">
               <input
-                class="form-check-input"
-                type="radio"
-                name="Cau<%=index%>"
-                id="Cau<%=index%>.3"
-                value="3"
+                      class="form-check-input"
+                      type="radio"
+                      name="questions[${status.index}].selectedOptionIndex"
+                      id="Cau${status.index + 1}.3"
+                      value="3"
               />
-              <label class="form-check-label" for="Cau<%=index%>"> C. </label> ${question.optionC}
+              <label class="form-check-label" for="Cau${status.index + 1}"> C. </label> ${question.optionC}
+              <div style="display: none">
+                <form:input path="questions[${status.index}].optionC" value="${question.optionC}"/>
+              </div>
             </div>
 
             <div class="form-check">
               <input
-                class="form-check-input"
-                type="radio"
-                name="Cau<%=index%>"
-                id="Cau<%=index%>.4"
-                value="4"
+                      class="form-check-input"
+                      type="radio"
+                      name="questions[${status.index}].selectedOptionIndex"
+                      id="Cau${status.index + 1}.4"
+                      value="4"
               />
-              <label class="form-check-label" for="Cau<%=index%>"> D. </label> ${question.optionD}
+              <label class="form-check-label" for="Cau${status.index + 1}"> D. </label> ${question.optionD}
+              <div style="display: none">
+                <form:input path="questions[${status.index}].optionD" value="${question.optionD}"/>
+              </div>
             </div>
 
             <div class="answer">
-              <input type="hidden" name="Cau<%=index%>" id="answer<%=index%>" value="${question.correctOptionIndex}">
+              <input type="hidden" name="Cau${status.index + 1}" id="answer${status.index + 1}" value="${question.correctOptionIndex}">
+              <div style="display: none">
+                <form:input path="questions[${status.index}].correctOptionIndex" value="${question.correctOptionIndex}"/>
+              </div>
             </div>
 
-            
-        </c:forEach>    
-                
-      </div>
 
-      <div class="card-footer">
-        <div class="d-flex justify-content-center my-2">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#resultModal"
-          >
-            Nộp bài
-          </button>
+          </c:forEach>
+
         </div>
 
-        <div
-            class="modal fade"
-            id="resultModal"
-            tabindex="-1"
-            aria-labelledby="resultModalLabel"
-            aria-hidden="true"
+        <div class="card-footer">
+          <div class="d-flex justify-content-center my-2">
+            <button
+                    type="submit"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#resultModal"
+            >
+              Nộp bài
+            </button>
+          </div>
+
+          <div
+                  class="modal fade"
+                  id="resultModal"
+                  tabindex="-1"
+                  aria-labelledby="resultModalLabel"
+                  aria-hidden="true"
           >
             <div class="modal-dialog">
               <div class="modal-content">
@@ -126,14 +147,14 @@
                     Xác nhận nộp bài?
                   </h1>
                   <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
                   ></button>
                 </div>
                 <div class="modal-footer">
-                  
+
                   <button type="button" class="btn btn-primary" id="submitExam">
                     Nộp bài
                   </button>
@@ -141,7 +162,8 @@
               </div>
             </div>
           </div>
-      </div>
+        </div>
+      </form:form>
     </div>
 
   </div>

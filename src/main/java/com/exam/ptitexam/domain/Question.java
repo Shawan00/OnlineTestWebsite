@@ -14,6 +14,7 @@ public class Question {
     private String optionC;
     private String optionD;
     private int correctOptionIndex;
+    private int selectedOptionIndex;
 
     @ManyToOne
     @JoinColumn(name = "exam_Id")
@@ -29,6 +30,14 @@ public class Question {
         this.optionD = optionD;
         this.correctOptionIndex = correctOptionIndex;
         this.exam = exam;
+    }
+
+    public int getSelectedOptionIndex() {
+        return selectedOptionIndex;
+    }
+
+    public void setSelectedOptionIndex(int selectedOptionIndex) {
+        this.selectedOptionIndex = selectedOptionIndex;
     }
 
     public long getId() {

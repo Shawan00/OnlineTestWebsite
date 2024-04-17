@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-    @Override
     List<Question> findAll();
     List<Question> findByExam(Exam exam);
 

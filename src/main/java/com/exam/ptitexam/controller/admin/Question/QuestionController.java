@@ -33,6 +33,7 @@ public class QuestionController {
         Question foundQuestion = questionRepository.findById(id);
         model.addAttribute("newQuestion", foundQuestion);
         model.addAttribute("examId", examId);
+        model.addAttribute("id", id);
         return "admin/question/update";
     }
 
@@ -58,14 +59,6 @@ public class QuestionController {
     }
 
 
-    @GetMapping("/doexam/{examId}")
-    public String getDoExamPage (Model model, @PathVariable("examId") String examId) {
-        Exam foundExam = examRepository.findFirstById(examId);
-        List<Question> questions = questionRepository.findByExam(foundExam);
-        model.addAttribute("questions", questions);
-        model.addAttribute("examId", examId);
-        return "client/doExam/doExam";
-    }
 
 //    @PostMapping("admin/exam/question/create_question")
 //    public String postCreateQuestion (Model model, @ModelAttribute("newQuestion") Question question) {
@@ -84,8 +77,8 @@ public class QuestionController {
         return "redirect:/admin/exam/update/question/" + examId;
     }
 
-    @PutMapping("/admin/exam/question/update_question/{examId}")
-    public String putUpdateQuestion (Model model, @ModelAttribute("newQuestion") Question question, @PathVariable("examId") String examId) {
+    @PostMapping("/admin/exam/question/update_question")
+    public String putUpdateQuestion (Model model, @ModelAttribute("newQuestion") Question question) {
         Question foundQuestion = questionRepository.findById(question.getId());
         System.out.println("Cau hoi moi: " + question.getQuestionContent());
         System.out.println(foundQuestion);
@@ -98,13 +91,22 @@ public class QuestionController {
             foundQuestion.setCorrectOptionIndex(question.getCorrectOptionIndex());
             questionRepository.save(foundQuestion);
         }
+        String examId = question.getExam().getId();
         return "redirect:/admin/exam/update/question/" + examId;
 
     }
 
-    @DeleteMapping("/admin/exam/question/delete_question/{id}/{examId}")
-    public String deleteQuestion (Model model, @PathVariable("id") long id, @PathVariable("examId") String examId) {
-        questionRepository.deleteById(id);
-        return "/admin/exam/update/question/" + examId;
+    @GetMapping("/admin/exam/question/delete_question/{id}/{examId}")
+    public String getDeleteQuestionPage (Model model, @PathVariable("id") long id, @PathVariable("examId") String examId) {
+        model.addAttribute("id", id);
+        model.addAttribute("examId", examId);
+        model.addAttribute("newQuestion", new Question());
+        return "admin/question/delete";
+    }
+
+    @PostMapping("/admin/exam/question/delete_question")
+    public String deleteQuestion (Model model, @ModelAttribute("newQuestion") Question question){
+        questionRepository.deleteById(question.getId());
+        return "redirect:/admin/exam/update/question/" + question.getExam().getId();
     }
 }
