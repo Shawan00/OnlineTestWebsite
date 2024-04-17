@@ -46,6 +46,10 @@ public class QuestionController {
         return "admin/question/show";
     }
 
+
+
+
+
     @GetMapping("/admin/exam/question/create_question/{examId}")
     public String getCreateQuestionPage (Model model, @PathVariable("examId") String examId) {
         model.addAttribute("examId", examId);
