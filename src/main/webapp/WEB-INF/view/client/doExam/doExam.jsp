@@ -26,7 +26,7 @@
 </head>
 
 <body>
-
+  <script src="/js/clock.js"></script>
 
   <div class="clock">
     <div id="countdown"></div>
@@ -52,7 +52,7 @@
                 class="form-check-input"
                 type="radio"
                 name="Cau<%=index%>"
-                id="Cau<%=index%>"
+                id="Cau<%=index%>.1"
                 value="1"
               />
               <label class="form-check-label" for="Cau<%=index%>"> A. </label> ${question.optionA}
@@ -63,7 +63,7 @@
                 class="form-check-input"
                 type="radio"
                 name="Cau<%=index%>"
-                id="Cau<%=index%>"
+                id="Cau<%=index%>.2"
                 value="2"
               />
               <label class="form-check-label" for="Cau<%=index%>"> B. </label> ${question.optionB}
@@ -74,7 +74,7 @@
                 class="form-check-input"
                 type="radio"
                 name="Cau<%=index%>"
-                id="Cau<%=index%>"
+                id="Cau<%=index%>.3"
                 value="3"
               />
               <label class="form-check-label" for="Cau<%=index%>"> C. </label> ${question.optionC}
@@ -85,12 +85,17 @@
                 class="form-check-input"
                 type="radio"
                 name="Cau<%=index%>"
-                id="Cau<%=index%>"
+                id="Cau<%=index%>.4"
                 value="4"
               />
               <label class="form-check-label" for="Cau<%=index%>"> D. </label> ${question.optionD}
             </div>
 
+            <div class="answer">
+              <input type="hidden" name="Cau<%=index%>" id="answer<%=index%>" value="${question.correctOptionIndex}">
+            </div>
+
+            
         </c:forEach>    
                 
       </div>
@@ -129,7 +134,7 @@
                 </div>
                 <div class="modal-footer">
                   
-                  <button type="button" class="btn btn-primary">
+                  <button type="button" class="btn btn-primary" id="submitExam">
                     Nộp bài
                   </button>
                 </div>
@@ -141,6 +146,11 @@
 
   </div>
 
+  <input type="hidden" id="totalQuestions" value="${questions.size()}" />
+  <input type="hidden" id="examId" value="${examId}" />
+  <input type="hidden" id="userId" value="${sessionScope.id}" />
+
+
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script
@@ -148,6 +158,62 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-  <script src="/js/clock.js"></script>
+  
+
+  <script>
+    $(document).ready(function() {
+      function calculateScore() {
+        var totalQuestion = parseInt(document.getElementById('totalQuestions').value);
+        var correctAnswer = 0;
+        
+        for (var i = 1; i <= totalQuestion; i++) {
+          var selectedOption = $("input[name='Cau" + i + "']:checked").val();
+          var correctOptionIndex = document.getElementById("answer" + i).value;
+
+          if (selectedOption == correctOptionIndex) {
+            correctAnswer ++;
+          }
+        }
+        console.log("Số câu đúng: " + correctAnswer);
+        var totalScore = correctAnswer / totalQuestion * 10;
+        totalScore = totalScore.toFixed(2);
+        console.log("Điểm: " + totalScore);
+
+        var userId = document.getElementById("userId").value;
+        var examId = document.getElementById("examId").value;
+        var examResult = {
+          numberOfCorrectQuestion: correctAnswer,
+          score: totalScore
+        }
+
+        console.log("userId: " + userId + "; examId: " + examId);
+        console.log(examResult);
+
+        // Gửi yêu cầu POST tới backend
+        fetch(`/doexam/examresult/${userId}/${examId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(examResult)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Nếu yêu cầu thành công, chuyển hướng trang web
+                window.location.href = `/examresult/${userId}/${examId}`;
+            }
+        })
+        .catch(error => {
+            // Xử lý lỗi nếu có
+            console.error('Error:', error);
+        });
+
+      }
+
+      $("#submitExam").click(function () {
+        calculateScore();
+      });
+    });
+  </script>
 
 </body>

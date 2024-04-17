@@ -15,7 +15,6 @@
 
 </head>
 <body>
-<script src="/js/Question.js"></script>
 
 <div class="container">
     <aside>
@@ -54,7 +53,9 @@
                 <% index++; %>
                 <div class="question">
                     <div class="questionContent">
-                        <h3><strong>Câu <%=index%>:</strong> ${question.questionContent}</h3>
+                        <h3 style="display: inline-block;"><strong>Câu <%=index%>:</strong> ${question.questionContent}</h3>
+                        <a style="display: inline-block;" href="/admin/exam/question/update_question/${question.id}/${examId}" class="openUpdateModal" data-id="${question.id}" data-modal="modal1"><span style="margin: 0 10px;" class="fa-solid fa-pen-to-square"></span></a>
+                        <a style="display: inline-block;" href="/admin/exam/question/delete_question/${question.id}/${examId}" class="openDeleteModal" data-id="${question.id}" data-modal="modal2"><span class="fa-solid fa-xmark"></span></a>
                     </div>
 
                     <div class="answer">
@@ -83,12 +84,55 @@
                         </div>
                         
                     </div>
+
+                    
                 </div>
             </c:forEach>
 
         </div>
     </main>
+    <input type="hidden" id="examId" value="${examId}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/Question.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            $(".openUpdateModal").click(function() {
+                var questionId = $(this).data("id");
+                var examId = document.getElementById("examId").value;
+                $.ajax({
+                    url: '/admin/exam/question/update_question/' + questionId + '/' + examId,
+                    type: 'PUT',
+                    success: function(question) {                        
+                        $("#questioncontent11").val(question.questionContent);
+                        $("#optionA11").val(question.optionA);
+                        $("#optionB11").val(question.optionB);
+                        $("#optionC11").val(question.optionC);
+                        $("#optionD11").val(question.optionD);
+                        $("#optionD11").val(question.optionD);
+                        $("#correctOptionIndex11").val(question.correctOptionIndex);
+                        // Open the modal
+                        $("#modal1").show();
+                        console.log(exam);
+                    }
+                });
+            });
+
+            $(".openDeleteModal").click(function() {
+                var questionId = $(this).data("id");
+                var examId = document.getElementById("examId").value;
+                $.ajax({
+                    url: '/admin/exam/question/delete_question/' + questionId + '/' + examId,
+                    type: 'DELETE',
+                    success: function(question) {
+                        // Open the modal
+                        $("#modal2").show();
+                        console.log(question);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 
