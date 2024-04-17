@@ -83,6 +83,8 @@ public class QuestionController {
     @PutMapping("/admin/exam/question/update_question/{examId}")
     public String putUpdateQuestion (Model model, @ModelAttribute("newQuestion") Question question, @PathVariable("examId") String examId) {
         Question foundQuestion = questionRepository.findById(question.getId());
+        System.out.println("Cau hoi moi: " + question.getQuestionContent());
+        System.out.println(foundQuestion);
         if (foundQuestion != null) {
             foundQuestion.setQuestionContent(question.getQuestionContent());
             foundQuestion.setOptionA(question.getOptionA());
@@ -97,7 +99,7 @@ public class QuestionController {
     }
 
     @DeleteMapping("/admin/exam/question/delete_question/{id}/{examId}")
-    public String getDeleteQuestionPage (Model model, @PathVariable("id") long id, @PathVariable("examId") String examId) {
+    public String deleteQuestion (Model model, @PathVariable("id") long id, @PathVariable("examId") String examId) {
         questionRepository.deleteById(id);
         return "/admin/exam/update/question/" + examId;
     }

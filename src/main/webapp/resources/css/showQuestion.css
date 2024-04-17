@@ -248,6 +248,10 @@ main{
     transform: translateY(0);
 }
 
+.openUpdateModal {
+    margin-left: 86%;
+}
+
 .close {
     float: right;
     font-size: 24px;

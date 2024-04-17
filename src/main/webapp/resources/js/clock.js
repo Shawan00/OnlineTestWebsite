@@ -1,6 +1,11 @@
 // Thời gian kết thúc của bộ đếm ngược (5 phút từ thời điểm hiện tại)
 const endTime = new Date(Date.now() + 5 * 60 * 1000);
 
+function addLeadingZero(number) {
+    return number < 10 ? '0' + number : number;
+}
+
+
 function updateCountdown() {
     const currentTime = new Date();
 
@@ -16,7 +21,10 @@ function updateCountdown() {
         const minutes = Math.floor(timeDifference / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-        document.getElementById('countdown').innerHTML = `${minutes} : ${seconds}`;
+        const formattedMinutes = addLeadingZero(minutes);
+        const formattedSeconds = addLeadingZero(seconds);
+
+        document.getElementById('countdown').innerHTML = `${formattedMinutes} : ${formattedSeconds}`;
     }
 }
 
