@@ -102,7 +102,7 @@
                 var examId = document.getElementById("examId").value;
                 $.ajax({
                     url: '/admin/exam/question/update_question/' + questionId + '/' + examId,
-                    type: 'GET',
+                    type: 'PUT',
                     success: function(question) {                        
                         $("#questioncontent11").val(question.questionContent);
                         $("#optionA11").val(question.optionA);

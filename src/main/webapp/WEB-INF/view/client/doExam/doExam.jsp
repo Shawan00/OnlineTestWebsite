@@ -26,7 +26,7 @@
 </head>
 
 <body>
-
+  <script src="/js/clock.js"></script>
 
   <div class="clock">
     <div id="countdown"></div>
@@ -158,7 +158,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-  <script src="/js/clock.js"></script>
+  
 
   <script>
     $(document).ready(function() {
