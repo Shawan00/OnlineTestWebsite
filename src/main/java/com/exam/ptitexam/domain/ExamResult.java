@@ -1,5 +1,6 @@
 package com.exam.ptitexam.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +16,7 @@ public class ExamResult {
     @JoinColumn(name = "user_Id")
     private User user;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "exam_Id")
     private Exam exam;

@@ -53,7 +53,14 @@
 
                 <div class="box-body" style="overflow: auto; height: 450px;">
                     <div class="modal-main">
-                        <form id="updateExamForm" method="put" action="/admin/exam/question/update_question/${examId}" modelAttribute="newQuestion">                         
+                        <form id="updateExamForm" method="post" action="/admin/exam/question/update_question" modelAttribute="newQuestion">
+                            <div style="display: none">
+                                <label>Mã câu hỏi:</label>
+                                <form:input type="text" path="newQuestion.id" readonly="true"/>
+                            </div>
+                            <div style="display: none">
+                                <form:input type="text" path="newQuestion.exam" readonly="true"/>
+                            </div>
                             <div>
                                 <label>Nội dung câu hỏi:</label>
                                 <form:input type="text" id="questioncontent11" path="newQuestion.questionContent" />

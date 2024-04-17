@@ -62,4 +62,8 @@ public class UserService {
     public User findByUsername(String fullName){
         return this.UserRepository.findByFullName(fullName);
     }
+
+    public User findFirstById(Long id){
+        return this.UserRepository.findFirstById(id);
+    }
 }
