@@ -35,7 +35,7 @@
                     <h3>Quản lý người dùng</h3>
                 </a>
 
-                <a href="">
+                <a href="/admin/thongke/alluser/examresult">
                     <span class="fa-solid fa-chart-line"></span>
                     <h3>Thống kê</h3>
                 </a>
@@ -71,9 +71,9 @@
                                 
                                 <label>Loại kì thi:</label>
                                 <form:select path="type">
-                                  <form:option value="Cuối kỳ">Tự do</form:option>
-                                  <form:option value="Giữa kỳ ">Thời gian</form:option>
-                                  <form:option value="Luyện tập">Thời gian</form:option>
+                                  <form:option value="Cuối kỳ">Cuối kỳ</form:option>
+                                  <form:option value="Giữa kỳ ">Giữa kỳ</form:option>
+                                  <form:option value="Luyện tập">Luyện tập</form:option>
                                 </form:select>
                               </div>
                             <div>

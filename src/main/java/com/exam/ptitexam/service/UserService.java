@@ -66,4 +66,8 @@ public class UserService {
     public User findFirstById(Long id){
         return this.UserRepository.findFirstById(id);
     }
+
+    public List<User> findByRole(Role role) {
+        return this.UserRepository.findByRole(role);
+    }
 }

@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="/css/result.css">
 </head>
 <body>
-    <script src="/js/result.js"></script>
-    <div id="particles-js"></div>
-
     <div class="container">
         <div class="message">
             <h1>Chúc mừng bạn đã hoàn thành bài thi!</h1>

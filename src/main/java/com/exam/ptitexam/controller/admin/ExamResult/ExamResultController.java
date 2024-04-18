@@ -1,15 +1,19 @@
 package com.exam.ptitexam.controller.admin.ExamResult;
 
 import com.exam.ptitexam.domain.*;
+import com.exam.ptitexam.domain.dto.ExamResultDTO;
+import com.exam.ptitexam.repository.RoleRepository;
 import com.exam.ptitexam.service.ExamResultService;
 import com.exam.ptitexam.service.ExamService;
 import com.exam.ptitexam.service.QuestionService;
 import com.exam.ptitexam.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,6 +25,8 @@ public class ExamResultController {
     private UserService userService;
     private ExamService examService;
     private QuestionService questionService;
+    @Autowired
+    private RoleRepository roleRepository;
     private HttpServletRequest request;
 
     public ExamResultController(ExamResultService examResultService,
@@ -67,6 +73,7 @@ public class ExamResultController {
         examResult.setNumberOfCorrectQuestion(correctAnswer);
         examResult.setScore(sroce);
         this.examResultService.handleSaveExamResult(examResult);
+        examResult.setScore(Math.round(sroce * 100.0) / 100.0);
         model.addAttribute("examResult", examResult);
         return "client/doExam/result";
     }
@@ -81,13 +88,24 @@ public class ExamResultController {
 
     @GetMapping("/admin/thongke/alluser/examresult")
     public String getThongKePage (Model model) {
-        List<User> allUser = this.userService.getAllUser();
-        HashMap<User, List<ExamResult>> allUserAndResult = new HashMap<>();
+        List<ExamResultDTO> examResultDTOS = new ArrayList<>();
+        int numberOfExam = this.examService.getAllExam().size();
+
+        Role use = roleRepository.findByName("USER");
+        List<User> allUser = this.userService.findByRole(use);
         for (User user : allUser) {
             List<ExamResult> examResults = this.examResultService.findByUser(user);
-            allUserAndResult.put(user, examResults);
+            int soLanThamGia = examResults.size();
+            double tiLeHoanThanh = (double)soLanThamGia / numberOfExam * 100;
+            tiLeHoanThanh = Math.round(tiLeHoanThanh * 100.0) / 100.0;
+            List<Double> diem = new ArrayList<>();
+            for (ExamResult examResult : examResults) {
+                diem.add(Math.round(examResult.getScore() * 100.0) / 100.0);
+            }
+            String ten = user.getFullName();
+            examResultDTOS.add(new ExamResultDTO(ten, soLanThamGia, tiLeHoanThanh, diem));
         }
-        model.addAttribute(allUserAndResult);
+        model.addAttribute("examResultDTOS", examResultDTOS);
         return "admin/thongke/show";
     }
 

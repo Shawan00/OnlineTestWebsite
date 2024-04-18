@@ -140,27 +140,7 @@
                   aria-labelledby="resultModalLabel"
                   aria-hidden="true"
           >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="resultModalLabel">
-                    Xác nhận nộp bài?
-                  </h1>
-                  <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-footer">
-
-                  <button type="button" class="btn btn-primary" id="submitExam">
-                    Nộp bài
-                  </button>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </form:form>

@@ -40,7 +40,7 @@
                     <h3>Quản lý người dùng</h3>
                 </a>
 
-                <a href="">
+                <a href="/admin/thongke/alluser/examresult">
                     <span class="fa-solid fa-chart-line"></span>
                     <h3>Thống kê</h3>
                 </a>
