@@ -20,18 +20,6 @@
     />
   </head>
   <body>
-    <input type="hidden" id="numberOfexamResultDTO" value="${examResultDTOS.size()}">
-    <% int index = 0; %>
-    <c:forEach items="${examResultDTOS}" var="examResultDTO">
-      <% index++; %>
-      <input type="hidden" id = "userId<%=index%>" value="${examResultDTO.userId}">
-      <input type="hidden" id = "ten<%=index%>" value="${examResultDTO.ten}">
-      <input type="hidden" id = "soLanThamGia<%=index%>" value="${examResultDTO.soLanThamGia}">
-      <input type="hidden" id = "tiLeHoanThanh<%=index%>" value="${examResultDTO.tiLeHoanThanh}">
-      <input type="hidden" id = "diem<%=index%>" value="${examResultDTO.diem}">
-
-    </c:forEach>
-
     <header>
         <style>
             
@@ -49,8 +37,8 @@
         <div class="row">
           <div class="col-10 d-flex justify-content-start">
             <div class="input-group mb-3">
-              <input type="search" class="form-control" id="search-input" placeholder="Search.....">
-              <button class="btn btn-outline-danger" type="button" id="search-button">Search</button>
+              <!-- <input type="search" class="form-control" id="search-input" placeholder="Search.....">
+              <button class="btn btn-outline-danger" type="button" id="search-button">Search</button> -->
             </div>
           </div>
           <div class="col-2 d-flex justify-content-end">
@@ -58,8 +46,15 @@
           </div>
         </div>
       </div>
-      <div class="accordion" id="danh-sach-sinh-vien">
-
+      <div class="accordion" id="thong-ke">
+        <h4>Họ tên: ${student.fullName}</h4>
+        <c:forEach items="${student.examDTOS}" var="item">
+            <p><strong>Mã kì thi: </strong>${item.id}</p>
+            <p><strong>Tên kì thi: </strong>${item.name}</p>
+            <p><strong>Điểm: </strong>${item.score}</p>
+            <p><strong>Trạng thái: </strong>${item.status}</p>
+            <p><strong>Thời gian tham gia: </strong>${item.localDateTime}</p>
+        </c:forEach>
       </div>  
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js'></script>
@@ -70,7 +65,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script src="/js/thongke.js"></script>
 
   </body>
 </html>

@@ -5,6 +5,7 @@ for (var i = 1; i <= numberOfExamResultDTO; i++) {
   var scores = scoreInput.trim().split(",");
   scores[0] = scores[0].substring(1);
   var item = {
+    userId: document.getElementById(`userId${i}`).value,
     name: document.getElementById(`ten${i}`).value,
     soLanThamGia: document.getElementById(`soLanThamGia${i}`).value,
     tiLeHoanThanh: document.getElementById(`tiLeHoanThanh${i}`).value,
@@ -42,7 +43,8 @@ for (var i = 1; i <= numberOfExamResultDTO; i++) {
             <div class="col-4">
               <strong>Số lần tham gia: ${item.soLanThamGia}</strong>
               <p>Tỉ lệ hoàn thành: ${item.tiLeHoanThanh}%</p>
-              <p>Điểm trung binh: ${tinhDiemTrungBinh(item.diem)}</p>
+              <p>Điểm trung bình: ${tinhDiemTrungBinh(item.diem)}</p>
+              <a href="/admin/thongke/student/${item.userId}" class="btn btn-danger mb-2">Xem chi tiết</a>
             </div>
             <div class="col-8" style="height: 300px;">
               <canvas id="myChart${index}"></canvas>

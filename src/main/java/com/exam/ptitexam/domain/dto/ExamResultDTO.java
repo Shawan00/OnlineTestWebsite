@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExamResultDTO {
+    private long userId;
     private String ten;
     private int soLanThamGia;
     private double tiLeHoanThanh;
@@ -13,7 +14,8 @@ public class ExamResultDTO {
     public ExamResultDTO() {
     }
 
-    public ExamResultDTO(String ten, int soLanThamGia, double tiLeHoanThanh, List<Double> diem) {
+    public ExamResultDTO(long userId, String ten, int soLanThamGia, double tiLeHoanThanh, List<Double> diem) {
+        this.userId = userId;
         this.ten = ten;
         this.soLanThamGia = soLanThamGia;
         this.tiLeHoanThanh = tiLeHoanThanh;
@@ -23,6 +25,14 @@ public class ExamResultDTO {
             trungBinh += x;
         }
         this.diemTrungBinh = trungBinh / diem.size();
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getTen() {
