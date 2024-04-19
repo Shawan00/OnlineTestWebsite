@@ -1,7 +1,9 @@
 package com.exam.ptitexam.controller.admin.ExamResult;
 
 import com.exam.ptitexam.domain.*;
+import com.exam.ptitexam.domain.dto.ExamDTO;
 import com.exam.ptitexam.domain.dto.ExamResultDTO;
+import com.exam.ptitexam.domain.dto.Student;
 import com.exam.ptitexam.repository.RoleRepository;
 import com.exam.ptitexam.service.ExamResultService;
 import com.exam.ptitexam.service.ExamService;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,12 +82,28 @@ public class ExamResultController {
         return "client/doExam/result";
     }
 
-    @GetMapping("/admin/thongke/examresult/{userId}")
+    @GetMapping("/admin/thongke/student/{userId}")
     public String getExamResultByUserPage (Model model, @PathVariable("userId") long userId) {
         User foundUser = this.userService.findFirstById(userId);
-        List<ExamResult> results = this.examResultService.findByUser(foundUser);
-        model.addAttribute("examResultByUser", results);
-        return "admin/thongke/byuser";
+        List<Exam> exams = this.examService.getAllExam();
+        List<ExamDTO> examDTOS = new ArrayList<>();
+        for (Exam exam : exams) {
+            ExamResult examResult = this.examResultService.findByUserAndExam(foundUser, exam);
+            String id = exam.getId();
+            String name = exam.getName();
+            double score = 0;
+            String status = "Không hoàn thành";
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+            String localDateTime = LocalDateTime.now().format(formatter);
+            if (examResult != null) {
+                score = examResult.getScore();
+                status = "Hoàn thành";
+            }
+            examDTOS.add(new ExamDTO(id, name, score, status, localDateTime));
+        }
+        Student student = new Student(foundUser.getFullName(), examDTOS);
+        model.addAttribute("student", student);
+        return "admin/thongke/detail";
     }
 
     @GetMapping("/admin/thongke/alluser/examresult")
@@ -103,7 +123,8 @@ public class ExamResultController {
                 diem.add(Math.round(examResult.getScore() * 100.0) / 100.0);
             }
             String ten = user.getFullName();
-            examResultDTOS.add(new ExamResultDTO(ten, soLanThamGia, tiLeHoanThanh, diem));
+            long userId = user.getId();
+            examResultDTOS.add(new ExamResultDTO(userId, ten, soLanThamGia, tiLeHoanThanh, diem));
         }
         model.addAttribute("examResultDTOS", examResultDTOS);
         return "admin/thongke/show";
