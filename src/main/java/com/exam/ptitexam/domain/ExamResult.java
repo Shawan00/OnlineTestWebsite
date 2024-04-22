@@ -3,6 +3,8 @@ package com.exam.ptitexam.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
+
 @Entity
 @Table(name = "results")
 public class ExamResult {
@@ -20,6 +22,16 @@ public class ExamResult {
     @ManyToOne
     @JoinColumn(name = "exam_Id")
     private Exam exam;
+
+    private Timestamp timeDoExam;
+
+    public Timestamp getTimeDoExam() {
+        return timeDoExam;
+    }
+
+    public void setTimeDoExam(Timestamp timeDoExam) {
+        this.timeDoExam = timeDoExam;
+    }
 
     public ExamResult() {
     }

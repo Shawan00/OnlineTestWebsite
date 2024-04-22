@@ -1,7 +1,7 @@
 .clock {
     position: fixed;
     top: 70px;
-    left: 85%;
+    left: 92%;
     transform: translateX(-50%);
     z-index: 9999; /* Đảm bảo đồng hồ hiển thị trên tất cả các phần khác */
     text-align: center;

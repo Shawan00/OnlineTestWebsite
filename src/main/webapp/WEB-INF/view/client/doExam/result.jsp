@@ -16,7 +16,7 @@
             <h1>Chúc mừng bạn đã hoàn thành bài thi!</h1>
             <p><strong>Số câu trả lời đúng:</strong> <span id="correctAnswers">${examResult.numberOfCorrectQuestion}</span></p>
             <p><strong>Điểm số:</strong> <span id="score">${examResult.score}</span></p>
-            <a href="/">Trở về</a>
+            <a href="/answer/${examResult.user.id}/${examResult.exam.id}">Xem lại câu trả lời</a>
         </div>
     </div>
 </body>

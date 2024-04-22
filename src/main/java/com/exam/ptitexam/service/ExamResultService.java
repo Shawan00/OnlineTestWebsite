@@ -29,15 +29,7 @@ public class ExamResultService {
     }
 
     public ExamResult findByUserAndExam(User user, Exam exam){
-        return this.examResultRepository.findByUserAndExam(user, exam);
+        return this.examResultRepository.findFirstByUserAndExamOrderByTimeDoExamDesc(user, exam);
     }
 
-    public double calculateScore(ExamResult examResult){
-        List<ExamResult> examResults = this.findByExam(examResult.getExam());
-        double score = 0;
-//        for (ExamResult result : examResults){
-//            if ()
-//        }
-        return score;
-    }
 }

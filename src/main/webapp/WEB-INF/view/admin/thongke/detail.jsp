@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 
 <!DOCTYPE html>
@@ -83,7 +84,7 @@
             <p><strong>Thời gian tham gia: </strong>${item.localDateTime}</p>
           </div>
           <div class="diem">
-            <p><strong>Điểm: </strong><strong style="font-size:50px; color:red">${item.score}</strong></p>
+            <p><strong>Điểm: </strong><strong style="font-size:50px; color:red"><fmt:formatNumber value="${item.score}" type="number" /></strong></p>
 
           </div>
         </div>
