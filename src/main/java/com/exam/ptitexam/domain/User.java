@@ -69,12 +69,5 @@ public class User {
         this.role = role;
     }
 
-    public void setRole(String role) {
-        this.role.setName(role);
-        this.role.setId(2);
-        this.role.setDescription("User");
-    }
-   
-    
 
 }
