@@ -16,4 +16,6 @@ public interface ExamResultRepository extends JpaRepository<ExamResult, Long> {
 
     ExamResult findFirstByUserAndExamOrderByTimeDoExamDesc(User user, Exam exam);
 
+    List<ExamResult> findByUserAndExam(User user, Exam exam);
+
 }

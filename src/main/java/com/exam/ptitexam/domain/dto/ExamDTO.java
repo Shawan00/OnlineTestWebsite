@@ -1,5 +1,6 @@
 package com.exam.ptitexam.domain.dto;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class ExamDTO {
@@ -7,17 +8,17 @@ public class ExamDTO {
     private String name;
     private double score;
     private String status;
-    private String localDateTime;
+    private Timestamp time;
 
     public ExamDTO() {
     }
 
-    public ExamDTO(String id, String name, double score, String status, String localDateTime) {
+    public ExamDTO(String id, String name, double score, String status, Timestamp time) {
         this.id = id;
         this.name = name;
         this.score = score;
         this.status = status;
-        this.localDateTime = localDateTime;
+        this.time = time;
     }
 
     public String getId() {
@@ -52,11 +53,11 @@ public class ExamDTO {
         this.status = status;
     }
 
-    public String getLocalDateTime() {
-        return localDateTime;
+    public Timestamp getTime() {
+        return time;
     }
 
-    public void setLocalDateTime(String localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setTime(Timestamp time) {
+        this.time = time;
     }
 }

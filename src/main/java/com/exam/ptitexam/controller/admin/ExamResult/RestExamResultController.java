@@ -92,18 +92,17 @@ public class RestExamResultController {
             List<Exam> exams = this.examService.getAllExam();
             List<ExamDTO> examDTOS = new ArrayList<>();
             for (Exam exam : exams) {
-                ExamResult examResult = this.examResultService.findByUserAndExam(foundUser, exam);
-                String id = exam.getId();
-                String name = exam.getName();
-                double score = 0;
-                String status = "Không hoàn thành";
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-                String localDateTime = LocalDateTime.now().format(formatter);
-                if (examResult != null) {
-                    score = examResult.getScore();
-                    status = "Hoàn thành";
+                List<ExamResult> examResults = this.examResultService.findListExamResultByUserAndExam(foundUser, exam);
+                for(ExamResult examResult : examResults){
+                    if(exam.getId().equals(examResult.getExam().getId())){
+                        String id = exam.getId();
+                        String name = exam.getName();
+                        double score = examResult.getScore();
+                        String status = "Hoàn thành";
+                        Timestamp time = examResult.getTimeDoExam();
+                        examDTOS.add(new ExamDTO(id, name, score, status, time));
+                    }
                 }
-                examDTOS.add(new ExamDTO(id, name, score, status, localDateTime));
             }
             Student student = new Student(foundUser.getFullName(), examDTOS);
             model.addAttribute("student", student);

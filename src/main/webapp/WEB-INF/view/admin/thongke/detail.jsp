@@ -81,10 +81,11 @@
             <p style="font-size: 25px;"><strong>Kì thi: ${item.name}</strong></p>
             <p><strong>Mã kì thi: </strong>${item.id}</p>
             <p><strong>Trạng thái: </strong>${item.status}</p>
-            <p><strong>Thời gian tham gia: </strong>${item.localDateTime}</p>
+            <p><strong>Thời gian tham gia: </strong>${item.time}</p>
           </div>
-          <div class="diem">
-            <p><strong>Điểm: </strong><strong style="font-size:50px; color:red"><fmt:formatNumber value="${item.score}" type="number" /></strong></p>
+          <div class="diem d-flex  ">
+            <p class="px-2"><strong>Điểm: </strong></p>
+            <p><strong style="font-size:30px; color:red"><fmt:formatNumber value="${item.score}" type="number" /></strong></p>
 
           </div>
         </div>
