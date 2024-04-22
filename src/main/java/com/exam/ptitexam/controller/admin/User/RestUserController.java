@@ -1,15 +1,10 @@
 package com.exam.ptitexam.controller.admin.User;
 
 import com.exam.ptitexam.domain.User;
-import com.exam.ptitexam.domain.dto.LoginDTO;
 import com.exam.ptitexam.domain.dto.UpdateUser;
 import com.exam.ptitexam.service.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,29 +15,13 @@ public class RestUserController {
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
-
-
 
     public RestUserController(UserService userService,
-                              PasswordEncoder passwordEncoder,
-                              AuthenticationManager authenticationManager) {
+                              PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
-        this.authenticationManager = authenticationManager;
     }
 
-    @PostMapping("/api/auth/login")
-    public ResponseEntity<?> login(@RequestBody LoginDTO body) throws Exception {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(body.getUsername(), body.getPassword())
-        );
-        if (!authentication.isAuthenticated()) {
-            return new ResponseEntity<>("User not authenticated.", HttpStatus.UNAUTHORIZED);
-        }
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User login successfully!.", HttpStatus.OK);
-    }
 
     @GetMapping("/api/admin/user/list")
     public List<User> getUserList() {

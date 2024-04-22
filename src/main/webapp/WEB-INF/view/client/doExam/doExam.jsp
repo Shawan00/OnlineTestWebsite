@@ -32,10 +32,10 @@
     <div id="countdown"></div>
   </div>
 
-  <div class="container">
+  <div class="container" style="margin-top: 20px">
     <div class="card">
       <div class="card-header">
-        <h3>Chọn đáp án đúng nhất cho mỗi câu hỏi dưới đây</h3>
+        <h3 >Chọn đáp án đúng nhất cho mỗi câu hỏi dưới đây</h3>
       </div>
       
       <form:form method="post" action="/doExam/examResult" modelAttribute="questionListWrapper">
@@ -44,6 +44,10 @@
           <c:forEach items="${questionListWrapper.questions}" var="question" varStatus="status">
             <div style="display: none">
               <form:input path="questions[${status.index}].exam" value="${examId}"/>
+            </div>
+
+            <div style="display: none">
+              <form:input path="questions[${status.index}].id" />
             </div>
 
             <p>

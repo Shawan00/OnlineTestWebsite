@@ -10,6 +10,7 @@ import com.exam.ptitexam.service.ExamService;
 import com.exam.ptitexam.service.QuestionService;
 import com.exam.ptitexam.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,24 +27,24 @@ import java.util.List;
 @Controller
 public class ExamResultController {
 
-    private ExamResultService examResultService;
-    private UserService userService;
-    private ExamService examService;
-    private QuestionService questionService;
-    @Autowired
-    private RoleRepository roleRepository;
-    private HttpServletRequest request;
+    private final RoleRepository roleRepository;
+    private final ExamResultService examResultService;
+    private final UserService userService;
+    private final ExamService examService;
+    private final QuestionService questionService;
+    private final HttpServletRequest request;
 
     public ExamResultController(ExamResultService examResultService,
                                 UserService userService,
                                 ExamService examService,
                                 QuestionService questionService,
-                                HttpServletRequest request) {
+                                HttpServletRequest request, RoleRepository roleRepository) {
         this.examResultService = examResultService;
         this.userService = userService;
         this.examService = examService;
         this.questionService = questionService;
         this.request = request;
+        this.roleRepository = roleRepository;
     }
 
 
@@ -68,7 +70,15 @@ public class ExamResultController {
         int correctAnswer = 0;
         for (Question question : questions){
             if (question.getCorrectOptionIndex() == question.getSelectedOptionIndex()){
-               correctAnswer++;
+                correctAnswer++;
+            }
+            // Retrieve the existing question from the database
+            Question existingQuestion = this.questionService.findQuestionById(question.getId());
+            if (existingQuestion != null) {
+                // Update the selected option index
+                existingQuestion.setSelectedOptionIndex(question.getSelectedOptionIndex());
+                // Save the updated question
+                this.questionService.saveAQuestion(existingQuestion);
             }
         }
         double sroce = (double) correctAnswer / questions.size() * 10;
@@ -77,7 +87,6 @@ public class ExamResultController {
         examResult.setNumberOfCorrectQuestion(correctAnswer);
         examResult.setScore(sroce);
         this.examResultService.handleSaveExamResult(examResult);
-        examResult.setScore(Math.round(sroce * 100.0) / 100.0);
         model.addAttribute("examResult", examResult);
         return "client/doExam/result";
     }
@@ -139,6 +148,20 @@ public class ExamResultController {
         ExamResult examResult = this.examResultService.findByUserAndExam(user, exam);
         model.addAttribute("examResult", examResult);
         return "client/doExam/result";
+    }
+
+    @GetMapping("/answer/{userId}/{examId}")
+    public String getAnswerPage(Model model, @PathVariable("examId") String examId, @PathVariable("userId") long userId){
+        Exam exam = this.examService.getExamById(examId);
+        User user = this.userService.findFirstById(userId);
+        ExamResult examResult = this.examResultService.findByUserAndExam(user, exam);
+        List<Question> questions = this.questionService.findQuestionByExam(exam);
+        QuestionListWrapper questionListWrapper = new QuestionListWrapper();
+        questionListWrapper.setQuestions(questions);
+        model.addAttribute("examResult", examResult);
+        model.addAttribute("questions", questions);
+        model.addAttribute("questionListWrapper", questionListWrapper);
+        return "client/doExam/answer";
     }
 
 

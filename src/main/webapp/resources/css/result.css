@@ -35,3 +35,11 @@ a {
 a:hover {
     background-color: #0056b3;
 }
+
+.correct-selected {
+    color: green;
+}
+
+.incorrect-selected {
+    color: red;
+}
