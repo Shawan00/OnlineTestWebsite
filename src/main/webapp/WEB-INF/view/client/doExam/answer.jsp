@@ -121,14 +121,7 @@
 
             <div class="card-footer">
                 <div class="d-flex justify-content-center my-2">
-                    <button
-                            type="submit"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#resultModal"
-                    >
-                        Nộp bài
-                    </button>
+                    <a class="btn btn-primary" href="/">Quay về trang chủ</a>
                 </div>
 
                 <div
@@ -138,27 +131,7 @@
                         aria-labelledby="resultModalLabel"
                         aria-hidden="true"
                 >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="resultModalLabel">
-                                    Xác nhận nộp bài?
-                                </h1>
-                                <button
-                                        type="button"
-                                        class="btn-close"
-                                        data-bs-dismiss="modal"
-                                        aria-label="Close"
-                                ></button>
-                            </div>
-                            <div class="modal-footer">
 
-                                <button type="button" class="btn btn-primary" id="submitExam">
-                                    Nộp bài
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
     </div>

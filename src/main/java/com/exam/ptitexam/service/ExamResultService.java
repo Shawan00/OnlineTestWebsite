@@ -32,4 +32,8 @@ public class ExamResultService {
         return this.examResultRepository.findFirstByUserAndExamOrderByTimeDoExamDesc(user, exam);
     }
 
+    public List<ExamResult> findListExamResultByUserAndExam(User user, Exam exam){
+        return this.examResultRepository.findByUserAndExam(user, exam);
+    }
+
 }
