@@ -88,7 +88,10 @@
                                   <form:option value="Thời gian">Thời gian</form:option>
                                 </form:select>
                               </div>
-                              
+                              <div id="thoiGianBox">
+                                <label>Thời gian làm bài: <form:input type="number" path="newExam.numberOfMinutes"/> phút</label>
+                                
+                            </div> 
                               <div class="form-bot">
                                   <button style="width: 100%;" type="submit">Cập nhật</button>
                               </div>
@@ -107,8 +110,33 @@
     
     </main>
          
-     
+    <script>
+        var currentStatus = document.getElementById('status11').value;
+        console.log(currentStatus);
+        function hienThiThoiGian() {
+            var thoiGianBox = document.getElementById('thoiGianBox');
+            if (currentStatus == 'Thời gian') {
+                thoiGianBox.style.display = 'block';
+                console.log('thoigian');
+            }
+            else {
+                thoiGianBox.style.display = 'none';
+                console.log('tudo');
+            }
+        }
+        hienThiThoiGian();
+        document.getElementById('status11').addEventListener('change', function() {
+            var trangThai = this.value;
+            var thoiGianBox = document.getElementById('thoiGianBox');
     
+            if (trangThai === 'Thời gian') {
+                thoiGianBox.style.display = 'block';
+            } else {
+                thoiGianBox.style.display = 'none';
+            }
+        });
+    </script>
+            
 
       
 </body>

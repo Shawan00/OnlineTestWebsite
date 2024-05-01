@@ -71,9 +71,9 @@
                                 
                                 <label>Loại kì thi:</label>
                                 <form:select path="type">
-                                  <form:option value="Cuối kỳ">Cuối kỳ</form:option>
-                                  <form:option value="Giữa kỳ ">Giữa kỳ</form:option>
                                   <form:option value="Luyện tập">Luyện tập</form:option>
+                                  <form:option value="Giữa kỳ ">Giữa kỳ</form:option>
+                                  <form:option value="Cuối kỳ">Cuối kỳ</form:option>
                                 </form:select>
                               </div>
                             <div>
@@ -85,11 +85,15 @@
                             </div>
                             <div>
                               <label>Trạng thái:</label>
-                              <form:select path="status">
+                              <form:select path="status" id="trangThai">
                                 <form:option value="Tự do">Tự do</form:option>
                                 <form:option value="Thời gian">Thời gian</form:option>
                               </form:select>
                             </div>
+                            <div id="thoiGianBox" style="display: none;">
+                                <label>Thời gian làm bài: <form:input type="number" path="numberOfMinutes"/> phút</label>
+                                
+                            </div>                            
                             <div class="form-bot">
                                 <button style="width: 100%;" type="submit">Thêm mới</button>
                             </div>
@@ -110,9 +114,19 @@
     
     </main>
          
-     
+    <script>
+        document.getElementById('trangThai').addEventListener('change', function() {
+            var trangThai = this.value;
+            var thoiGianBox = document.getElementById('thoiGianBox');
     
-
+            if (trangThai === 'Thời gian') {
+                thoiGianBox.style.display = 'block';
+            } else {
+                thoiGianBox.style.display = 'none';
+            }
+        });
+    </script>
+        
       
 </body>
 </html>

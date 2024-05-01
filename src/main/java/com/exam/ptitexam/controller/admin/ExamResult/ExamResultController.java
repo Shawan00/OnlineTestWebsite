@@ -56,6 +56,7 @@ public class ExamResultController {
         questionListWrapper.setQuestions(questions);
         model.addAttribute("questionListWrapper", questionListWrapper);
         model.addAttribute("examId", examId);
+        model.addAttribute("exam", foundExam);
         return "client/doExam/doExam";
     }
 
