@@ -16,6 +16,7 @@ public class Exam {
     private String type;
     private String status;
     private String description;
+    private int numberOfMinutes;
 
     public String getId() {
         return id;
@@ -50,5 +51,11 @@ public class Exam {
         this.description = description;
     }
 
-    
+    public int getNumberOfMinutes() {
+        return this.numberOfMinutes;
+    }
+
+    public void setNumberOfMinutes(int numberOfMinutes) {
+        this.numberOfMinutes = numberOfMinutes;
+    }
 }

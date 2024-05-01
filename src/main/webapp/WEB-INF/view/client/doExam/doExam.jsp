@@ -26,9 +26,10 @@
 </head>
 
 <body>
+  <input type="hidden" value="${exam.status}" id="examStatus">
+  <input type="hidden" value="${exam.numberOfMinutes}" id="numberOfMinutes">
   <script src="/js/clock.js"></script>
-
-  <div class="clock">
+  <div class="clock"  id="clock1">
     <div id="countdown"></div>
   </div>
 
@@ -220,6 +221,16 @@
         calculateScore();
       });
     });
+    var examStatus = document.getElementById("examStatus").value;
+    console.log(examStatus);
+    function hienThiThoiGian() {
+      var clock = document.getElementById("clock1");
+      if (examStatus == "Tự do") {
+          clock.style.display = 'none';
+          console.log('tudo');
+      }
+    }
+    hienThiThoiGian();
   </script>
 
 </body>
