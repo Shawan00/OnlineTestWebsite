@@ -11,27 +11,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/manageUser.css">
+    <link rel="stylesheet" href="/css/manageExam.css">
 
 
 </head>
 <body>
 
-    <div class="container">
+<%--    <div class="container">--%>
         <aside>
             <div class="top">
                 <div class="logo">
                     <img src="/client/img/logo.png" alt="">
-                    <h2 style="color: #ad171c;"> PTIT</h2>
+                    <h2 style="color: #ad171c;"> Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
             <div class="sidebar">
-                <a href="/admin/exam">
+                <a href="/admin/exam" class="active">
                     <span class="fa-solid fa-laptop-code"></span>
                     <h3>Quản lý kì thi</h3>
                 </a>
 
-                <a href="/admin/user" class="active">
+                <a href="/admin/user">
                     <span class="fa-regular fa-user"></span>
                     <h3>Quản lý người dùng</h3>
                 </a>
@@ -47,17 +47,23 @@
             <h1>Quản lý người dùng</h1>
 
             <div class="content">
-                <div class="box-header">
-                    <p style="display: inline-block;">Cập nhật thông tin kì thi</p>
-                    <a 
-                    href="/admin/exam/update/question/${newExam.id}" 
-                    class="viewquestion"
-                    style="display: inline-block;"
-                    >Xem câu hỏi</a>
+                <div class="content-header">
+                    <div class="box-header">
+                        <p><b>Cập nhật thông tin kì thi</b></p>
+                    </div>
+                    <div class="box-add">
+                        <a href="/admin/exam/update/question/${newExam.id}"
+                        class="viewquestion">
+                        <button>
+                            <span style="margin-right: 5px;" class="fa-solid fa-plus"></span>
+                            Xem câu hỏi
+                        </button>
+                        </a>
 
+                    </div>
                 </div>
 
-                <div class="box-body" style="overflow: auto; height: 450px;">
+                <div class="box-body" >
                     <div class="modal-main">
                         <form id="updateExamForm" method="post" action="/admin/exam/update" modelAttribute="newExam">
                             <div>
@@ -108,7 +114,7 @@
     
 
     
-    </main>
+<%--    </main>--%>
          
     <script>
         var currentStatus = document.getElementById('status11').value;

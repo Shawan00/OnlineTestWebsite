@@ -13,17 +13,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/manageUser.css">
+    <link rel="stylesheet" href="/css/manageExam.css">
 
 
 </head>
 <body>
-    <div class="container">
+<%--    <div class="container">--%>
         <aside>
             <div class="top">
                 <div class="logo">
                     <img src="/client/img/logo.png" alt="">
-                    <h2 style="color: #ad171c;"> PTIT</h2>
+                    <h2 style="color: #ad171c;"> Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
             <div class="sidebar">
@@ -49,10 +49,10 @@
 
             <div class="content">
                 <div class="box-header">
-                    <p>Thêm mới người dùng</p>
+                    <p><b>Thêm mới người dùng</b></p>
                 </div>
-                <div class="box-body" style="overflow: auto; height: 450px;">
-                    <div class="modal-main">
+                <div class="box-body" style=" height: 450px;">
+                    <div class="modal-main"  >
                         <form:form id="addUserForm" method="post" action="/admin/user/create" modelAttribute="newUser">
                             <div>
                                 <c:set var="errorFullname">

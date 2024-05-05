@@ -13,17 +13,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/manageUser.css">
+    <link rel="stylesheet" href="/css/manageExam.css">
 
 
 </head>
 <body>
-    <div class="container">
+<%--    <div class="container">--%>
         <aside>
             <div class="top">
                 <div class="logo">
                     <img src="/client/img/logo.png" alt="">
-                    <h2 style="color: #ad171c;"> PTIT</h2>
+                    <h2 style="color: #ad171c;"> Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
             <div class="sidebar">
@@ -49,40 +49,38 @@
 
             <div class="content">
                 <div class="box-header">
-                    <p>Cập nhật thông tin người dùng</p>
+                    <p><b>Cập nhật thông tin người dùng</b></p>
                 </div>
 
         
                 <div class="box-body" style="overflow: auto; height: 450px;">
-                    <table style="width:100%"  scroll="auto">
+<%--                    <table style="width:100%"  scroll="auto">--%>
                         <div class="modal-main">
-                            <form:form  method="post" action="/admin/user/update" modelAttribute="newUser">
-
-                                  <div>
+                            <form:form id="updateUserForm" method="post" action="/admin/user/update" modelAttribute="newUser">
+                                <div>
                                     <label>ID:</label>
                                     <form:input type="text" class="form-control" path="id"/>
-                                    
-                                  </div>
-                                  <div>
+
+                                </div>
+                                <div>
                                     <label>FullName:</label>
                                     <form:input type="text" path="fullName"/>
-                                  </div>
-                                  <div>
+                                </div>
+                                <div>
                                     <label >Email:</label>
                                     <form:input type="text" path="email" disabled="true"/>
-                                  </div>
-                                  <div style="display: none;">
+                                </div>
+                                <div style="display: none;">
                                     <label >Password:</label>
                                     <form:input type="password"  path="password"/>
-                                  </div>
-                                  <div class="form-bot">
-                                      <button style="width: 100%;" type="submit">Cập nhật</button>
-                                  </div>
-                                
+                                </div>
+                                <div class="form-bot">
+                                    <button style="width: 100%;" type="submit">Cập nhật</button>
+                                </div>
                             </form:form>
                        
                 
-                    </table>
+<%--                    </table>--%>
                 </div>
             </div>
 
@@ -91,45 +89,45 @@
 
       
         
-    </div>  
+<%--    </div>--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/User.js"></script>
 
    
-        $(document).ready(function() {
-            $(".openUpdateModal").click(function() {
-                var userId = $(this).data("id");
-                console.log(userId);
-                $.ajax({
-                    url: '/admin/user/' + userId,
-                    type: 'GET',
-                    success: function(user) {                        
-                        $("#fullName11").val(user.fullName);
-                        $("#studentCode11").val(user.studentCode);
-                        $("#email11").val(user.email);
-                        $("#gender11").val(user.gender);
-                        // Open the modal
-                        $("#modal1").show();
-                        console.log(user);
-                    }
-                });
-            });
+<%--        $(document).ready(function() {--%>
+<%--            $(".openUpdateModal").click(function() {--%>
+<%--                var userId = $(this).data("id");--%>
+<%--                console.log(userId);--%>
+<%--                $.ajax({--%>
+<%--                    url: '/admin/user/' + userId,--%>
+<%--                    type: 'GET',--%>
+<%--                    success: function(user) {                        --%>
+<%--                        $("#fullName11").val(user.fullName);--%>
+<%--                        $("#studentCode11").val(user.studentCode);--%>
+<%--                        $("#email11").val(user.email);--%>
+<%--                        $("#gender11").val(user.gender);--%>
+<%--                        // Open the modal--%>
+<%--                        $("#modal1").show();--%>
+<%--                        console.log(user);--%>
+<%--                    }--%>
+<%--                });--%>
+<%--            });--%>
 
-            $(".openDeleteModal").click(function() {
-                var userId = $(this).data("id");
-                console.log(userId);
-                $.ajax({
-                    url: '/admin/user/delete/' + userId,
-                    type: 'POST',
-                    success: function(user) {
-                        // Open the modal
-                        $("#modal2").show();
-                        console.log(user);
-                    }
-                });
-            });
-        });
-    </script> -->
+<%--            $(".openDeleteModal").click(function() {--%>
+<%--                var userId = $(this).data("id");--%>
+<%--                console.log(userId);--%>
+<%--                $.ajax({--%>
+<%--                    url: '/admin/user/delete/' + userId,--%>
+<%--                    type: 'POST',--%>
+<%--                    success: function(user) {--%>
+<%--                        // Open the modal--%>
+<%--                        $("#modal2").show();--%>
+<%--                        console.log(user);--%>
+<%--                    }--%>
+<%--                });--%>
+<%--            });--%>
+<%--        });--%>
+<%--    </script> -->--%>
 </body>
 </html>
 
