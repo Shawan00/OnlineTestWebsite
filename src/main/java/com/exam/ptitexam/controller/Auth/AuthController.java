@@ -6,6 +6,7 @@ import com.exam.ptitexam.domain.dto.LoginDTO;
 import com.exam.ptitexam.domain.dto.RegisterDTO;
 import com.exam.ptitexam.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,10 +15,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -36,7 +41,14 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Valid @RequestBody RegisterDTO body) {
+    public ResponseEntity<?> register(@Valid @RequestBody RegisterDTO body, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            List<String> errors = bindingResult.getAllErrors().stream()
+                    .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                    .collect(Collectors.toList());
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+
         try {
             User newUser = this.userService.registerDTOtoUser(body);
             Role userRole = new Role();
@@ -60,7 +72,7 @@ public class AuthController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             return new ResponseEntity<>("User login successfully!.", HttpStatus.OK);
         } catch (AuthenticationException e) {
-            return new ResponseEntity<>("User not authenticated.", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("Email or password is invalid", HttpStatus.UNAUTHORIZED);
         }
     }
 }
