@@ -5,6 +5,7 @@
     border: 0;
     text-decoration: none;
     list-style: none;
+    font-family: 'poppins', sans-serif;
 }
 html {
     font-size: 14px;
@@ -13,7 +14,7 @@ html {
 body {
     width: 100vw;
     height: 100vh;
-    overflow-y: hidden;
+    overflow-x: hidden;
     background-color: #f6f6f9;
 }
 
@@ -21,13 +22,15 @@ body {
     display: grid;
     width: 100%;
     margin: 0 auto;
-    gap: 35px;
     grid-template-columns: 300px auto;
 }
 
 aside {
+    position: fixed;
+    width: 300px;
     height: 100vh;
-    background-color: #fafbfd;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 aside .top {
@@ -41,13 +44,13 @@ aside .logo {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    color: #b30000;
 }
 
 aside .logo img {
     width: 40px;
     height: auto;
-    border-radius: 50%;
     overflow: hidden;
 }
 
@@ -80,74 +83,116 @@ aside .sidebar a span {
 }
 
 aside .sidebar a.active {
-    background-color: rgba(132, 139, 200, 0.18);
-    color: #7380ec;
+    background-color: #fff4f4;
+    color: #b30000;
     margin-left: 0;
+}
+aside .sidebar a.active h3 {
+    color: #b30000;
 }
 
 aside .sidebar a.active::before {
     content: "";
     width: 6px;
     height: 100%;
-    background-color: #7380ec;
+    background-color: #b30000;
 }
 
 aside .sidebar a.active span {
-    color: #7380ec;
-    margin-left: calc(1rem-3px);
+    color: #b30000;
+    margin-left: calc(1rem - 3px);
 }
 
 aside .sidebar a:hover {
-    color: #7380ec;
+    color: #b30000;
 }
 
 aside .sidebar a:hover span,
 aside .sidebar a:hover h3 {
     margin-left: 1rem;
-    color: #7380ec;
+    color: #b30000;
 }
-
+main{
+    margin-left: 300px;
+    padding: 30px;
+    width: calc(100% - 300px);
+}
 main > h1 {
-    margin-top: 20px;
+    padding-bottom: 20px;
+    color: #b30000;
+
 }
 
+/*.content {*/
+/*    padding: 15px 30px 0 30px;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    min-height: 250px;*/
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.37);*/
+/*    margin-top: 50px;*/
+/*}*/
 .content {
-    padding: 15px 30px 0 30px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 40px;
     min-height: 250px;
-    
-    margin-top: 50px;
-}
-
-.box-header,
-.box-add {
-    padding: 1.5rem 1.5rem;
-    border-bottom: 1px solid rgba(72, 94, 144, 0.16);
     background-color: #fff;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
+/*.box-header,*/
+/*.box-add {*/
+/*    padding: 1.5rem 1.5rem;*/
+/*    border-bottom: 1px solid rgba(72, 94, 144, 0.16);*/
+/*    background-color: #fff;*/
+/*    !*border-top-left-radius: 10px;*!*/
+/*    !*border-top-right-radius: 10px;*!*/
+
+/*}*/
+.content-header{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+}
+.box-header{
+    width: 50%;
+    color: #b30000;
+}
+.box-add button{
+    border-radius: 5px;
+}
 .box-header p {
     font-size: 1.5rem;
 }
-
-
+table{
+    /*border-collapse: collapse;*/
+    border-spacing: 0;
+    font-size: 16px;
+}
 .box-body {
     background-color: #fff;
-}
-
-.box-body thead tr{
-    height: 50px;
-    color: #fff;
-    background-color: #172b4c;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .box-body tr{
     height: 50px;
-    background-color: #e8edf8;
+    background-color: #ffeaea;
+}
+.box-body td {
+    border-right: solid white 1px;
+}
+.box-body tbody tr:nth-child(2n+1){
+    background-color: white;
+}
+.box-body tbody tr:nth-child(2n+1) td{
+    border-right: solid #ffeaea 1px;
+    border-left: solid #ffeaea 1px;
+}
+.box-body thead tr{
+    height: 50px;
+    color: #fff;
+    background-color: #b30000;
 }
 
 .box-body tr td > a {
@@ -164,12 +209,17 @@ main > h1 {
 
 .box-add button {
     padding: 10px 20px;
-    background-color: #0052cc;
+    background-color: #b30000;
     color: #fff;
     cursor: pointer;
 }
+.box-add button:hover{
+    background-color: #800000;
+}
 
-
+tr{
+    border-bottom: solid #ccc 1px;
+}
 /*============================== Modal add ============================*/
 
 .modal {
@@ -182,8 +232,7 @@ main > h1 {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     animation: modalFadeIn 0.3s ease-in-out;
-  }
-  
+}
 .modal-content {
     background-color: #fff;
     margin: 10% auto;
@@ -232,52 +281,70 @@ main > h1 {
 }
 
 @keyframes modalFadeIn {
-from {
-    opacity: 0;
-}
-to {
-    opacity: 1;
-}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 
 #addExamForm,
+#addUserForm,
+#updateUserForm,
 #updateExamForm {
-    max-width: 400px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f5f5f5;
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 4px;*/
+    /*background-color: #f5f5f5;*/
     margin-top: 20px;
+    font-size: 16px;
 }
-    
+
 #addExamForm div,
+#addUserForm div,
+#updateUserForm div,
 #updateExamForm div {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
-  
+#addExamForm h2,
+#addExamForm input{
+    margin-bottom: 20px;
+}
 label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
 }
-  
+
 input[type="text"],
-input[type="email"] {
+input[type="email"] ,
+input[type="password"]{
     width: 100%;
-    padding: 8px;
+    padding: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-  }
-  
+    font-size: 16px;
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    width: 50px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
 select {
     width: 100%;
-    padding: 8px;
+    padding: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 .form-bot {
@@ -288,21 +355,38 @@ select {
 .form-bot > .close {
     font-size: 13px !important;
 }
-  
+
 button[type="submit"] {
-    background-color: #0052cc;
+    background-color: #b30000;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button[type="submit"]:hover {
-    background-color: #003e99;
+    background-color: #800000;
 }
 
 
+
+/*showQuestion*/
+
+.question{
+    padding: 10px;
+    border-bottom: solid 1px #ddd;
+}
+.questionContent{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.answer > div{
+    padding: 10px;
+
+}
 
 
 
