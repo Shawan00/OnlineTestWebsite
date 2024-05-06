@@ -339,10 +339,18 @@ input[type="password"]{
     font-size: 16px;
 }
 
-input[type="number"] {
+input[type="number"]{
     padding: 8px;
     border: 1px solid #ccc;
     width: 50px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+input[type="datetime-local"]{
+    padding: 8px;
+    border: 1px solid #ccc;
+    width: 200px;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
