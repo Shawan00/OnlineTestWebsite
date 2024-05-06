@@ -60,14 +60,14 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
+                                <div>
+                                    <a class="dropdown-item" href="/thongke/student/${sessionScope.id}">Xem lịch sử bài thi</a>
+                                </div>
                                 <form method="post" action="/logout">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                                     <button class="dropdown-item">Đăng xuất</button>
                                 </form>
-                                <div>
-                                    <a href="/thongke/student/${sessionScope.id}">Xem lịch sử bài thi</a>
-                                </div>
                             </li>
                         </ul>
                     </div>

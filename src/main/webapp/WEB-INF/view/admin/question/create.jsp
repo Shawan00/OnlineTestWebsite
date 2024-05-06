@@ -32,7 +32,7 @@
                     <h3>Quản lý kì thi</h3>
                 </a>
 
-                <a href="/admin/user" >
+                <a href="/admin/user">
                     <span class="fa-regular fa-user"></span>
                     <h3>Quản lý người dùng</h3>
                 </a>
@@ -46,7 +46,7 @@
 
 
         <main>
-            <h1>Quản lý người dùng</h1>
+            <h1>Quản lý câu hỏi</h1>
 
             <div class="content" >
                 <div class="content-header">

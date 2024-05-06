@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="sidebar">
-            <a href="/admin/exam" class="active" >
+            <a href="/admin/exam" class="active">
                 <span class="fa-solid fa-laptop-code" class="active"></span>
                 <h3>Quản lý kì thi</h3>
             </a>
@@ -38,6 +38,10 @@
             <a href="/admin/thongke/alluser/examresult">
                 <span class="fa-solid fa-chart-line"></span>
                 <h3>Thống kê</h3>
+            </a>
+            <a href="/logout">
+                <span class="fa-solid fa-right-from-bracket"></span>
+                <h3>Đăng xuất</h3>
             </a>
         </div>
     </aside>
@@ -59,7 +63,7 @@
                                 <div style="display: none">
                                     <form:input type="text" path="exam" value="${examId}"/>
                                 </div>
-                                <button style="background-color: #2949ae; margin-top: 1rem;" type="submit" >Xóa</button>
+                                <button style="background-color: red; margin-top: 1rem;" type="submit" >Xóa</button>
                             </form:form>
                         </div>
                     </div>

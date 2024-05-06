@@ -30,7 +30,7 @@
                     <h3>Quản lý kì thi</h3>
                 </a>
 
-                <a href="/admin/user">
+                <a href="/admin/user" >
                     <span class="fa-regular fa-user"></span>
                     <h3>Quản lý người dùng</h3>
                 </a>
@@ -38,6 +38,11 @@
                 <a href="/admin/thongke/alluser/examresult">
                     <span class="fa-solid fa-chart-line"></span>
                     <h3>Thống kê</h3>
+                </a>
+
+                <a href="/logout">
+                    <span class="fa-solid fa-right-from-bracket"></span>
+                    <h3>Đăng xuất</h3>
                 </a>
             </div>
         </aside>
@@ -90,12 +95,10 @@
                               </form:select>
                             </div>
                             <div id="thoiGianBox" style="display: none;">
+                                <label>Thời gian làm bài: <form:input type="number" path="numberOfMinutes"/> phút</label>
                                 <label>Thời gian bắt đầu: <form:input type="datetime-local" path="startTime"/></label>
                                 <label>Thời gian kết thúc: <form:input type="datetime-local" path="endTime"/></label>
                             </div>
-                            <div>
-                                <label>Thời gian làm bài: <form:input type="number" path="numberOfMinutes"/> phút</label>
-                            </div>      
                             <div class="file-upload" style="margin-top: 10px; margin-bottom: 10px;">
                                 <label for="fileInput">Đề thi:</label>
                                 <input type="file" id="fileInput" name="questionFile" accept=".xls, .xlsx">
