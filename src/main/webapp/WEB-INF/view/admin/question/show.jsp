@@ -26,7 +26,7 @@
         </div>
         <div class="sidebar">
             <a href="/admin/exam">
-                <span class="fa-solid fa-laptop-code"></span>
+                <span class="fa-solid fa-laptop-code" class="active"></span>
                 <h3>Quản lý kì thi</h3>
             </a>
 

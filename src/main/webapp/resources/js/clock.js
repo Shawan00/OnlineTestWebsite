@@ -12,14 +12,18 @@ if (examStatus == "Thời gian"){
 
     function updateCountdown() {
         const currentTime = new Date();
+        const examId = document.getElementById("examId").value;
+        const userId = document.getElementById("userId").value;
+        const btnSubmit = document.getElementById("submitExam");
 
         const timeDifference = endTime - currentTime;
 
         if (timeDifference <= 0) {
             document.getElementById('countdown').innerHTML = 'Hết giờ';
+            btnSubmit.click();
             // Chuyển hướng đến trang doexam.com
             setTimeout(function() {
-                window.location.href = '/';
+                window.location.href = '/answer/userId/examId';
             }, 2000); // Chuyển hướng sau 2 giây
         } else {
             const minutes = Math.floor(timeDifference / (1000 * 60));

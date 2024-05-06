@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Table(name = "results")
 public class ExamResult {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int numberOfCorrectQuestion;
     private double score;

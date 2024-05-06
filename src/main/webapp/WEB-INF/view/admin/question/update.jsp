@@ -27,11 +27,11 @@
             </div>
             <div class="sidebar">
                 <a href="/admin/exam">
-                    <span class="fa-solid fa-laptop-code"></span>
+                    <span class="fa-solid fa-laptop-code" class="active"></span>
                     <h3>Quản lý kì thi</h3>
                 </a>
 
-                <a href="/admin/user" class="active">
+                <a href="/admin/user" >
                     <span class="fa-regular fa-user"></span>
                     <h3>Quản lý người dùng</h3>
                 </a>

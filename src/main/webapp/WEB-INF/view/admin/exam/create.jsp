@@ -25,12 +25,12 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="/admin/exam">
+                <a href="/admin/exam" class="active">
                     <span class="fa-solid fa-laptop-code"></span>
                     <h3>Quản lý kì thi</h3>
                 </a>
 
-                <a href="/admin/user" class="active">
+                <a href="/admin/user" >
                     <span class="fa-regular fa-user"></span>
                     <h3>Quản lý người dùng</h3>
                 </a>
@@ -43,7 +43,7 @@
         </aside>
 
         <main>
-            <h1>Quản lý người dùng</h1>
+            <h1>Quản lý kì thi</h1>
 
             <div class="content">
                 <div class="box-header">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="box-body" style="overflow: auto; height: 450px;">
                     <div class="modal-main">
-                        <form:form id="addExamForm" method="post" action="/admin/exam/create" modelAttribute="newExam">
+                        <form:form id="addExamForm" method="post" action="/admin/exam/create" modelAttribute="newExam" enctype="multipart/form-data">
                             
                             <div>
                                 
@@ -93,7 +93,11 @@
                             <div id="thoiGianBox" style="display: none;">
                                 <label>Thời gian làm bài: <form:input type="number" path="numberOfMinutes"/> phút</label>
                                 
-                            </div>                            
+                            </div>      
+                            <div class="file-upload" style="margin-top: 10px; margin-bottom: 10px;">
+                                <label for="fileInput">Đề thi:</label>
+                                <input type="file" id="fileInput" name="questionFile" accept=".xls, .xlsx">
+                              </div>                      
                             <div class="form-bot">
                                 <button style="width: 100%;" type="submit">Thêm mới</button>
                             </div>
@@ -123,6 +127,14 @@
                 thoiGianBox.style.display = 'block';
             } else {
                 thoiGianBox.style.display = 'none';
+            }
+        });
+
+        document.getElementById('addExamForm').addEventListener('submit', function(e) {
+            var fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Vui lòng chọn file câu hỏi');
+                e.preventDefault();
             }
         });
     </script>

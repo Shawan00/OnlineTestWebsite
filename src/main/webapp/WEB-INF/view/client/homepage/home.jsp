@@ -65,6 +65,9 @@
 
                                     <button class="dropdown-item">Đăng xuất</button>
                                 </form>
+                                <div>
+                                    <a href="/thongke/student/${sessionScope.id}">Xem lịch sử bài thi</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
