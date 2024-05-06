@@ -3,7 +3,7 @@ var examStatus = document.getElementById("examStatus").value;
 console.log(numberOfMinutes + " " + examStatus);
 if (true){
 
-    const endTime = new Date(Date.now() + parseInt(numberOfMinutes) * 60 * 1000 + 2000);
+    const endTime = new Date(Date.now() + parseInt(numberOfMinutes) * 60 * 1000);
 
     function addLeadingZero(number) {
         return number < 10 ? '0' + number : number;
