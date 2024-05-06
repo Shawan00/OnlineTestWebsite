@@ -240,5 +240,28 @@
     var examStatus = document.getElementById("examStatus").value;
 
 </script> -->
+<script>
+  var totalQuestions = document.getElementById("totalQuestions").value;
+    for(let i = 1; i <= totalQuestions; i++) {
+        for(let j = 1; j <= 4; j++) {
+            document.getElementById("Cau" + i + "." + j).addEventListener("click", function () {
+                let button = document.getElementById("Cau" + i);
+                if(button.classList.contains("btn-outline-primary")) {
+                    button.classList.remove("btn-outline-primary");
+                    button.classList.add("btn-primary");
+                }
+            });
+        }
+    }
 
+    for(let i = 1; i <= totalQuestions; i++) {
+        let button = document.getElementById("Cau" + i);
+        button.addEventListener("click", function () {
+            // scroll to question
+            let question = document.getElementById("cardCau" + i);
+            question.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+
+        });
+    }
+</script>
 </body>
