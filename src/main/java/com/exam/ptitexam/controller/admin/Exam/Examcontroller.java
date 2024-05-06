@@ -58,8 +58,6 @@ public class Examcontroller {
     @PostMapping("/admin/exam/update")
     public String postUpdateexam(Model model, @ModelAttribute("newExam") Exam exam){
         Exam currentExam = this.examService.getExamById(exam.getId());
-        System.out.println(exam.getName());
-        System.out.println(currentExam);
         if(currentExam != null){
             currentExam.setName(exam.getName());
             currentExam.setType(exam.getType());

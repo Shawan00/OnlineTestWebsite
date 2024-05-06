@@ -27,6 +27,14 @@
             color: green;
         }
 
+        .correct-btn {
+            background: lightgreen;
+        }
+
+        .incorrect-btn {
+            background: lightcoral;
+        }
+
         .incorrect {
             color: red;
         }
@@ -41,6 +49,9 @@
             Thí sinh: ${sessionScope.fullName}
         </h4>
         <h4>Kết quả</h4>
+        <h4>
+            Kì thi: ${examResult.exam.name}
+        </h4>
         <a class="btn btn-primary" href="/">Quay về trang chủ</a>
     </div>
 </div>
@@ -147,7 +158,7 @@
                     <button
                             id="Cau${status.index + 1}"
                             type="button"
-                            class="btn btn-outline-primary"
+                            class="btn btn-outline-primary ${question.selectedOptionIndex != null ? (question.selectedOptionIndex == question.correctOptionIndex ? 'correct-btn' : 'incorrect-btn') : ''}"
                             style="width: 100%;"
                     >
                             ${status.index + 1}
