@@ -70,7 +70,7 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable) // Disable CSRF
         .authorizeHttpRequests(authorize -> authorize
                 .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.INCLUDE).permitAll()
-                .requestMatchers("/client/**","/product/**", "/css/**", "/js/**","/images/**","/api/**" ).permitAll()
+                .requestMatchers("/client/**","/product/**", "/css/**", "/js/**","/images/**","/api/**", "/register" ).permitAll()
                 .requestMatchers(HttpMethod.POST,"/api/auth/**", "/admin/exam/question/**", "/doExam/examResult").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated())
