@@ -5,6 +5,7 @@
     border: 0;
     text-decoration: none;
     list-style: none;
+    font-family: 'poppins', sans-serif;
 }
 html {
     font-size: 14px;
@@ -26,8 +27,11 @@ body {
 }
 
 aside {
+    position: fixed;
+    width: 300px;
     height: 100vh;
-    background-color: #fafbfd;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 aside .top {
@@ -41,13 +45,13 @@ aside .logo {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    color: #b30000;
 }
 
 aside .logo img {
     width: 40px;
     height: auto;
-    border-radius: 50%;
     overflow: hidden;
 }
 
@@ -80,34 +84,38 @@ aside .sidebar a span {
 }
 
 aside .sidebar a.active {
-    background-color: rgba(132, 139, 200, 0.18);
-    color: #7380ec;
+    background-color: #fff4f4;
+    color: #b30000;
     margin-left: 0;
+}
+aside .sidebar a.active h3 {
+    color: #b30000;
 }
 
 aside .sidebar a.active::before {
     content: "";
     width: 6px;
     height: 100%;
-    background-color: #7380ec;
+    background-color: #b30000;
 }
 
 aside .sidebar a.active span {
-    color: #7380ec;
-    margin-left: calc(1rem-3px);
+    color: #b30000;
+    margin-left: calc(1rem - 3px);
 }
 
 aside .sidebar a:hover {
-    color: #7380ec;
+    color: #b30000;
 }
 
 aside .sidebar a:hover span,
 aside .sidebar a:hover h3 {
     margin-left: 1rem;
-    color: #7380ec;
+    color: #b30000;
 }
 
 main{
+    margin-left: 300px;
     padding: 35px;
     padding-left: 0px;
 }
