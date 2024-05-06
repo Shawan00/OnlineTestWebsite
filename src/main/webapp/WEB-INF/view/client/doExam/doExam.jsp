@@ -171,8 +171,77 @@
 ></script>
 
 
-<script>
+<!-- <script>
     var totalQuestions = document.getElementById("totalQuestions").value;
+    for(let i = 1; i <= totalQuestions; i++) {
+        for(let j = 1; j <= 4; j++) {
+            document.getElementById("Cau" + i + "." + j).addEventListener("click", function () {
+                let button = document.getElementById("Cau" + i);
+                if(button.classList.contains("btn-outline-primary")) {
+                    button.classList.remove("btn-outline-primary");
+                    button.classList.add("btn-primary");
+                }
+            });
+        }
+        console.log("Số câu đúng: " + correctAnswer);
+        var totalScore = correctAnswer / totalQuestion * 10;
+        totalScore = totalScore.toFixed(2);
+        console.log("Điểm: " + totalScore);
+
+        var userId = document.getElementById("userId").value;
+        var examId = document.getElementById("examId").value;
+        var examResult = {
+          numberOfCorrectQuestion: correctAnswer,
+          score: totalScore
+        }
+
+        console.log("userId: " + userId + "; examId: " + examId);
+        console.log(examResult);
+
+        // Gửi yêu cầu POST tới backend
+        fetch(`/doexam/examresult/${userId}/${examId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(examResult)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Nếu yêu cầu thành công, chuyển hướng trang web
+                window.location.href = `/examresult/${userId}/${examId}`;
+            }
+        })
+        .catch(error => {
+            // Xử lý lỗi nếu có
+            console.error('Error:', error);
+        });
+
+      }
+
+      $("#submitExam").click(function () {
+        calculateScore();
+      });
+    });
+    var examStatus = document.getElementById("examStatus").value;
+    console.log(examStatus);
+  </script>
+
+    for(let i = 1; i <= totalQuestions; i++) {
+        let button = document.getElementById("Cau" + i);
+        button.addEventListener("click", function () {
+            // scroll to question
+            let question = document.getElementById("cardCau" + i);
+            question.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+
+        });
+    }
+
+    var examStatus = document.getElementById("examStatus").value;
+
+</script> -->
+<script>
+  var totalQuestions = document.getElementById("totalQuestions").value;
     for(let i = 1; i <= totalQuestions; i++) {
         for(let j = 1; j <= 4; j++) {
             document.getElementById("Cau" + i + "." + j).addEventListener("click", function () {
@@ -194,17 +263,5 @@
 
         });
     }
-
-    var examStatus = document.getElementById("examStatus").value;
-
-    function hienThiThoiGian() {
-        var clock = document.getElementById("clock1");
-        if (examStatus == "Tự do") {
-            clock.style.display = 'none';
-        }
-    }
-
-    hienThiThoiGian();
 </script>
-
 </body>

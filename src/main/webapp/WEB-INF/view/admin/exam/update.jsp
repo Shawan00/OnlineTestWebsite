@@ -95,9 +95,11 @@
                                 </form:select>
                               </div>
                             <div id="thoiGianBox">
-                                <label>Thời gian làm bài: <form:input type="number" path="newExam.numberOfMinutes"/> phút</label>
                                 <label>Thời gian bắt đầu: <form:input type="datetime-local" path="newExam.startTime"/></label>
                                 <label>Thời gian kết thúc: <form:input type="datetime-local" path="newExam.endTime"/></label>
+                            </div>
+                            <div>
+                                <label>Thời gian làm bài: <form:input type="number" path="newExam.numberOfMinutes"/> phút</label>
                             </div> 
                               <div class="form-bot">
                                   <button style="width: 100%;" type="submit">Cập nhật</button>
