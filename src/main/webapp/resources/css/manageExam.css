@@ -1,3 +1,6 @@
+/*b30000 b80000*/
+
+
 * {
     margin: 0;
     padding: 0;
@@ -45,7 +48,8 @@ aside .logo {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    color: #b30000;
+    color: #2949ae;
+    /*color: #b30000;*/
 }
 
 aside .logo img {
@@ -83,34 +87,34 @@ aside .sidebar a span {
 }
 
 aside .sidebar a.active {
-    background-color: #fff4f4;
-    color: #b30000;
+    background-color: #f4f8ff;
+    color: #2949ae;
     margin-left: 0;
 }
 aside .sidebar a.active h3 {
-    color: #b30000;
+    color: #2949ae;
 }
 
 aside .sidebar a.active::before {
     content: "";
     width: 6px;
     height: 100%;
-    background-color: #b30000;
+    background-color: #2949ae;
 }
 
 aside .sidebar a.active span {
-    color: #b30000;
+    color: #2949ae;
     margin-left: calc(1rem - 3px);
 }
 
 aside .sidebar a:hover {
-    color: #b30000;
+    color: #2949ae;
 }
 
 aside .sidebar a:hover span,
 aside .sidebar a:hover h3 {
     margin-left: 1rem;
-    color: #b30000;
+    color: #2949ae;
 }
 main{
     margin-left: 300px;
@@ -119,7 +123,7 @@ main{
 }
 main > h1 {
     padding-bottom: 20px;
-    color: #b30000;
+    color: #2949ae;
 
 }
 
@@ -156,7 +160,7 @@ main > h1 {
 }
 .box-header{
     width: 50%;
-    color: #b30000;
+    color: #2949ae;
 }
 .box-add button{
     border-radius: 5px;
@@ -177,7 +181,7 @@ table{
 
 .box-body tr{
     height: 50px;
-    background-color: #ffeaea;
+    background-color: rgba(41, 73, 174, 0.1);
 }
 .box-body td {
     border-right: solid white 1px;
@@ -186,13 +190,13 @@ table{
     background-color: white;
 }
 .box-body tbody tr:nth-child(2n+1) td{
-    border-right: solid #ffeaea 1px;
-    border-left: solid #ffeaea 1px;
+    border-right: solid rgba(41, 73, 174, 0.1) 1px;
+    border-left: solid rgba(41, 73, 174, 0.1) 1px;
 }
 .box-body thead tr{
     height: 50px;
     color: #fff;
-    background-color: #b30000;
+    background-color: #2949ae;
 }
 
 .box-body tr td > a {
@@ -209,12 +213,12 @@ table{
 
 .box-add button {
     padding: 10px 20px;
-    background-color: #b30000;
+    background-color: #2949ae;
     color: #fff;
     cursor: pointer;
 }
 .box-add button:hover{
-    background-color: #800000;
+    background-color: #20367e;
 }
 
 tr{
@@ -303,7 +307,12 @@ tr{
     margin-top: 20px;
     font-size: 16px;
 }
-
+#addExamForm label,
+#addUserForm label,
+#updateUserForm label,
+#updateExamForm label{
+    font-weight: bold;
+}
 #addExamForm div,
 #addUserForm div,
 #updateUserForm div,
@@ -338,6 +347,21 @@ input[type="number"] {
     box-sizing: border-box;
     font-size: 16px;
 }
+input::file-selector-button{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+
+}
+input::file-selector-button:hover{
+    border: 1px solid #2949ae;
+    color: #2949ae;
+}
+
 select {
     width: 100%;
     padding: 15px;
@@ -345,6 +369,7 @@ select {
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
+    margin-bottom: 20px;
 }
 
 .form-bot {
@@ -357,7 +382,7 @@ select {
 }
 
 button[type="submit"] {
-    background-color: #b30000;
+    background-color: #2949ae;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -367,7 +392,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #800000;
+    background-color: #20367e;
 }
 
 
@@ -378,14 +403,20 @@ button[type="submit"]:hover {
     padding: 10px;
     border-bottom: solid 1px #ddd;
 }
+.question > div:last-child {
+    padding: 20px;
+    font-size: 18px;
+}
 .questionContent{
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    font-size: 18px;
 }
 .answer > div{
     padding: 10px;
-
+    padding-left: 50px;
+    font-size: 16px;
 }
 
 

@@ -22,12 +22,12 @@
     <aside>
         <div class="top">
             <div class="logo">
-                <img src="/client/img/logo.png" alt="">
-                <h2 style="color: #ad171c;"> Hệ thống trắc nghiệm</h2>
+                <img src="/client/img/logo-2.png" alt="">
+                <h2  > Hệ thống trắc nghiệm</h2>
             </div>
         </div>
         <div class="sidebar">
-            <a href="/admin/exam">
+            <a href="/admin/exam" class="active">
                 <span class="fa-solid fa-laptop-code"></span>
                 <h3>Quản lý kì thi</h3>
             </a>
@@ -87,18 +87,19 @@
                             <div>
                                 <label for=""><strong>D.</strong> ${question.optionD}</label>
                             </div>
-                            <div>
-                                <strong for="">Đáp án:
-                                    <c:choose>
-                                        <c:when test="${question.correctOptionIndex eq 1}">A</c:when>
-                                        <c:when test="${question.correctOptionIndex eq 2}">B</c:when>
-                                        <c:when test="${question.correctOptionIndex eq 3}">C</c:when>
-                                        <c:when test="${question.correctOptionIndex eq 4}">D</c:when>
-                                        <c:otherwise>Không xác định</c:otherwise>
-                                    </c:choose>
-                                </strong>
-                            </div>
 
+
+                        </div>
+                        <div>
+                            <strong for="">Đáp án:
+                                <c:choose>
+                                    <c:when test="${question.correctOptionIndex eq 1}">A</c:when>
+                                    <c:when test="${question.correctOptionIndex eq 2}">B</c:when>
+                                    <c:when test="${question.correctOptionIndex eq 3}">C</c:when>
+                                    <c:when test="${question.correctOptionIndex eq 4}">D</c:when>
+                                    <c:otherwise>Không xác định</c:otherwise>
+                                </c:choose>
+                            </strong>
                         </div>
 
 

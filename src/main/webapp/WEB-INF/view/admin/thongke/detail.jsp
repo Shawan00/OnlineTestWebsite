@@ -20,8 +20,33 @@
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
+  <link rel="stylesheet" href="/css/thongke.css">
 </head>
 <body>
+<aside>
+  <div class="top">
+    <div class="logo">
+      <img src="/client/img/logo-2.png" alt="">
+      <h2> Hệ thống trắc nghiệm</h2>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="/admin/exam">
+      <span class="fa-solid fa-laptop-code"></span>
+      <h3>Quản lý kì thi</h3>
+    </a>
+
+    <a href="/admin/user">
+      <span class="fa-regular fa-user"></span>
+      <h3>Quản lý người dùng</h3>
+    </a>
+
+    <a href="/admin/thongke/alluser/examresult" class="active">
+      <span class="fa-solid fa-chart-line"></span>
+      <h3>Thống kê</h3>
+    </a>
+  </div>
+</aside>
 <header>
   <style>
     *{

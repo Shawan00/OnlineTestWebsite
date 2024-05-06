@@ -38,7 +38,7 @@ aside .logo {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    color: #b30000;
+    color: #2949ae;
 }
 
 aside .logo img {
@@ -76,34 +76,34 @@ aside .sidebar a span {
 }
 
 aside .sidebar a.active {
-    background-color: #fff4f4;
-    color: #b30000;
+    background-color: #f4f8ff;
+    color: #2949ae;
     margin-left: 0;
 }
 aside .sidebar a.active h3 {
-    color: #b30000;
+    color: #2949ae;
 }
 
 aside .sidebar a.active::before {
     content: "";
     width: 6px;
     height: 100%;
-    background-color: #b30000;
+    background-color: #2949ae;
 }
 
 aside .sidebar a.active span {
-    color: #b30000;
+    color: #2949ae;
     margin-left: calc(1rem - 3px);
 }
 
 aside .sidebar a:hover {
-    color: #b30000;
+    color: #2949ae;
 }
 
 aside .sidebar a:hover span,
 aside .sidebar a:hover h3 {
     margin-left: 1rem;
-    color: #b30000;
+    color: #2949ae;
 }
 aside h2{
     margin: 0px;
@@ -127,10 +127,9 @@ main{
 }
 main > h1 {
     padding-bottom: 20px;
-    color: #b30000;
+    color: #2949ae;
     font-size: 28px;
     font-weight: bold;
-
 }
 .content {
     padding: 40px;

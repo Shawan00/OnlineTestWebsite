@@ -20,12 +20,12 @@
     <aside>
         <div class="top">
             <div class="logo">
-                <img src="/client/img/logo.png" alt="">
-                <h2 style="color: #ad171c;"> Hệ thống trắc nghiệm</h2>
+                <img src="/client/img/logo-2.png" alt="">
+                <h2 > Hệ thống trắc nghiệm</h2>
             </div>
         </div>
         <div class="sidebar">
-            <a href="/admin/exam">
+            <a href="/admin/exam" class="active" >
                 <span class="fa-solid fa-laptop-code" class="active"></span>
                 <h3>Quản lý kì thi</h3>
             </a>
@@ -59,7 +59,7 @@
                                 <div style="display: none">
                                     <form:input type="text" path="exam" value="${examId}"/>
                                 </div>
-                                <button style="background-color: red; margin-top: 1rem;" type="submit" >Xóa</button>
+                                <button style="background-color: #2949ae; margin-top: 1rem;" type="submit" >Xóa</button>
                             </form:form>
                         </div>
                     </div>

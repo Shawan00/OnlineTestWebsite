@@ -83,94 +83,86 @@
 
     </header>
 
-    <div id="exam-items" class="container">
+    <main id="exam-items" >
 
-        <span class="filters">
-            <label for="exercise-type"><i class="fa-solid fa-filter"></i></label>
-            <select id="exercise-type">
-              <option value="all">Tất cả</option>
-              <option value="Tự do">Tự do</option>
-              <option value="Thời gian">Thời gian</option>
-            </select>
-        </span>
+
+
         
-        <div class="practice-title" id="course-1">
-            <h2>Luyện tập</h2>
-        </div>
-        
-            <div id="practice">
-                <c:forEach var="exam" items="${exams}">
-                    <c:if test="${exam.type == 'Luyện tập'}">
-                        <div class="items" data-status="${exam.status}">
-                            <img class="item-img" src="client/img/subject.png" alt="">
-                            <h2 class="item-title">${exam.name}</h2>
-                            <div class="item-info">
-                                <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                                <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
-                            </div>
-                            <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
-                            <a href="/doexam/${exam.id}">
-                                <button class="btn-start-exam">Bắt đầu thi</button>
-                            </a>
-                        </div>
-                    </c:if>
-                </c:forEach>
+        <div id="practice">
+            <div class="filters">
+                <label for="exercise-type"><i class="fa-solid fa-filter"></i></label>
+                <select id="exercise-type">
+                    <option value="all">Tất cả</option>
+                    <option value="Tự do">Tự do</option>
+                    <option value="Thời gian">Thời gian</option>
+                </select>
             </div>
-       
+            <div class="practice-title" id="course-1">
+                <h2>Luyện tập</h2>
+            </div>
+            <c:forEach var="exam" items="${exams}">
+                <c:if test="${exam.type == 'Luyện tập'}">
+                    <div class="items" data-status="${exam.status}">
+                        <img class="item-img" src="client/img/subject.png" alt="">
+                        <h2 class="item-title">${exam.name}</h2>
+                        <div class="item-info">
+                            <span style="color:#677788;" class="fa-regular fa-clock"></span>
+                            <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
+                        </div>
+                        <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
+                        <a href="/doexam/${exam.id}">
+                            <button class="btn-start-exam">Bắt đầu thi</button>
+                        </a>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </div>
+
+        <div id="midterm">
             <div class="practice-title" id="course-2">
                 <h2>Giữa kỳ</h2>
             </div>
-            <div id="midterm">
-                <c:forEach var="exam" items="${exams}">
-                    <c:if test="${exam.type == 'Giữa kỳ'}">
-                        <div class="items" data-status="${exam.status}">
-                            <img class="item-img" src="client/img/subject.png" alt="">
-                            <h2 class="item-title">${exam.name}</h2>
-                            <div class="item-info">
-                                <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                                <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
-                            </div>
-                            <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
-                            <a href="/doexam/${exam.id}">
-                                <button class="btn-start-exam">Bắt đầu thi</button>
-                            </a>
+            <c:forEach var="exam" items="${exams}">
+                <c:if test="${exam.type == 'Giữa kỳ'}">
+                    <div class="items" data-status="${exam.status}">
+                        <img class="item-img" src="client/img/subject.png" alt="">
+                        <h2 class="item-title">${exam.name}</h2>
+                        <div class="item-info">
+                            <span style="color:#677788;" class="fa-regular fa-clock"></span>
+                            <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
                         </div>
-                    </c:if>
-                </c:forEach>
+                        <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
+                        <a href="/doexam/${exam.id}">
+                            <button class="btn-start-exam">Bắt đầu thi</button>
+                        </a>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </div>
 
-                
-
-            </div>
+        <div id="finalexam">
             <div class="practice-title" id="course-3">
                 <h2>Cuối kỳ</h2>
             </div>
-            <div id="finalexam">
-                <c:forEach var="exam" items="${exams}">
-                    <c:if test="${exam.type == 'Cuối kỳ'}">
-                        <div class="items" data-status="${exam.status}">
-                            <img class="item-img" src="client/img/subject.png" alt="">
-                            <h2 class="item-title">${exam.name}</h2>
-                            <div class="item-info">
-                                <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                                <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
-                            </div>
-                            <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
-                            <a href="/doexam/${exam.id}">
-                                <button class="btn-start-exam">Bắt đầu thi</button>
-                            </a>
+            <c:forEach var="exam" items="${exams}">
+                <c:if test="${exam.type == 'Cuối kỳ'}">
+                    <div class="items" data-status="${exam.status}">
+                        <img class="item-img" src="client/img/subject.png" alt="">
+                        <h2 class="item-title">${exam.name}</h2>
+                        <div class="item-info">
+                            <span style="color:#677788;" class="fa-regular fa-clock"></span>
+                            <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
                         </div>
-                    </c:if>
-                </c:forEach>
+                        <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
+                        <a href="/doexam/${exam.id}">
+                            <button class="btn-start-exam">Bắt đầu thi</button>
+                        </a>
+                    </div>
+                </c:if>
+            </c:forEach>
 
-            </div>
-        
-
-
-        
-
-    </div>
-    
-
+        </div>
+    </main>
     <script>
         // Lấy các phần tử HTML cần sử dụng
         const searchInput = document.getElementById('search-input');

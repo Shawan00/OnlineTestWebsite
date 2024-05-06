@@ -22,8 +22,8 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="/client/img/logo.png" alt="">
-                    <h2 style="color: #ad171c;"> Hệ thống trắc nghiệm</h2>
+                    <img src="/client/img/logo-2.png" alt="">
+                    <h2  > Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
             <div class="sidebar">
