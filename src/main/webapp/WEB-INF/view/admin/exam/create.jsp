@@ -91,7 +91,8 @@
                             </div>
                             <div id="thoiGianBox" style="display: none;">
                                 <label>Thời gian làm bài: <form:input type="number" path="numberOfMinutes"/> phút</label>
-                                
+                                <label>Thời gian bắt đầu: <form:input type="datetime-local" path="startTime"/></label>
+                                <label>Thời gian kết thúc: <form:input type="datetime-local" path="endTime"/></label>
                             </div>      
                             <div class="file-upload" style="margin-top: 10px; margin-bottom: 10px;">
                                 <label for="fileInput">Đề thi:</label>

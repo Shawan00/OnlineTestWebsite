@@ -92,9 +92,9 @@
           <button class="btn btn-outline-danger" type="button" id="search-button">Search</button> -->
         </div>
       </div>
-      <div class="col-2 d-flex justify-content-end">
+      <!-- <div class="col-2 d-flex justify-content-end">
         <button class="btn btn-danger mb-2" id="export-data">Export Data</button>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="accordion" id="thong-ke">

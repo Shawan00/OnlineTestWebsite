@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "exams")
@@ -17,6 +19,8 @@ public class Exam {
     private String status;
     private String description;
     private int numberOfMinutes;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 
     public String getId() {
         return id;
@@ -57,5 +61,27 @@ public class Exam {
 
     public void setNumberOfMinutes(int numberOfMinutes) {
         this.numberOfMinutes = numberOfMinutes;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public boolean isAvailableNow() {
+        if (this.status.equals("Tự do")) return true;
+        LocalDateTime currentTime = LocalDateTime.now();
+        return currentTime.isAfter(this.startTime) && currentTime.isBefore(this.endTime);
     }
 }
