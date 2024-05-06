@@ -24,7 +24,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="/client/img/logo.png" alt="">
+                    <img src="/client/img/logo-2.png" alt="">
                     <h2> Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table style="width: 100%;border-bottom: #b30000 solid 2px;" id="examTable" >
+                    <table style="width: 100%; border-bottom: #2949ae solid 2px;" id="examTable" >
                         <thead>
                             <tr>
                                 <th style="width:10%">STT</th>

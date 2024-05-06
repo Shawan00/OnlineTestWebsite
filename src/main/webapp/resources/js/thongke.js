@@ -44,7 +44,7 @@ for (var i = 1; i <= numberOfExamResultDTO; i++) {
               <strong>Số lần tham gia: ${item.soLanThamGia}</strong>
               <p>Tỉ lệ hoàn thành: ${item.tiLeHoanThanh}%</p>
               <p>Điểm trung bình: ${tinhDiemTrungBinh(item.diem)}</p>
-              <a href="/admin/thongke/student/${item.userId}" class="btn btn-danger mb-2">Xem chi tiết</a>
+              <a href="/admin/thongke/student/${item.userId}" class="btn btn-primary mb-2">Xem chi tiết</a>
             </div>
             <div class="col-8" style="height: 300px;">
               <canvas id="myChart${index}"></canvas>

@@ -29,7 +29,7 @@
     <aside class = "reset-this">
       <div class="top">
         <div class="logo">
-          <img src="/client/img/logo.png" alt="">
+          <img src="/client/img/logo-2.png" alt="">
           <h2> Hệ thống trắc nghiệm</h2>
         </div>
       </div>
@@ -71,11 +71,11 @@
             <div class="col-10 d-flex justify-content-start">
               <div class="input-group mb-3">
                 <input type="search" class="form-control" id="search-input" placeholder="Search.....">
-                <button class="btn btn-outline-danger" type="button" id="search-button">Search</button>
+                <button class="btn btn-outline-primary" type="button" id="search-button">Search</button>
               </div>
             </div>
             <div class="col-2 d-flex justify-content-end">
-              <button class="btn btn-danger mb-2" id="export-data">Export Data</button>
+              <button class="btn btn-primary mb-2" id="export-data">Export Data</button>
             </div>
           </div>
         </div>

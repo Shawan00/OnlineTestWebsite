@@ -24,8 +24,8 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="/client/img/logo.png" alt="">
-                    <h2 style="color: #ad171c;"> Hệ thống trắc nghiệm</h2>
+                    <img src="/client/img/logo-2.png" alt="">
+                    <h2 > Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
             <div class="sidebar">
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="box-body" style="overflow: auto; height: 450px;">
-                    <table style="width:100%;border-bottom: #b30000 solid 2px;" id="examTable" scroll="auto">
+                    <table style="width:100%; border-bottom: #2949ae solid 2px;" id="examTable" scroll="auto">
                         <thead>
                             <tr>
                                 <th style="width:10%">ID</th>

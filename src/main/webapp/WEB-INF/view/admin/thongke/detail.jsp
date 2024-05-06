@@ -20,79 +20,106 @@
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
+  <link rel="stylesheet" href="/css/thongke.css">
 </head>
 <body>
-<header>
-  <style>
-    *{
-      box-sizing: border-box;
-    }
-    h3{
-      color: red;
-      padding: 20px;
-      margin-left: 100px;
-    }
-    h4, .allexams{
-      margin: 20px;
-      background-color: #f7f7f7; 
-      border-radius: 10px;
-      box-shadow:  0 0 5px rgba(128, 128, 128, 0.932);
-      padding: 20px;
-    }
-    .exam{
-      display: flex;
-      justify-content: space-between;
-      
-      border-bottom: solid 1px #aaa; 
-      padding: 20px;
-    }
-    .detail{
-      width: calc(100% - 200px);
-      word-wrap: break-word; 
-    }
-    .diem{
-      width: 100px;
-      align-items: center;
-      margin: 0px 100px;
-    }
-  </style>
-  <h3>Thống kê</h3>
-</header>
-<div class="container">
-  <div class="my-2">
-    <div class="row">
-      <div class="col-10 d-flex justify-content-start">
-        <div class="input-group mb-3">
-          <!-- <input type="search" class="form-control" id="search-input" placeholder="Search.....">
-          <button class="btn btn-outline-danger" type="button" id="search-button">Search</button> -->
-        </div>
-      </div>
-      <!-- <div class="col-2 d-flex justify-content-end">
-        <button class="btn btn-danger mb-2" id="export-data">Export Data</button>
-      </div> -->
+<aside>
+  <div class="top">
+    <div class="logo">
+      <img src="/client/img/logo-2.png" alt="">
+      <h2> Hệ thống trắc nghiệm</h2>
     </div>
   </div>
-  <div class="accordion" id="thong-ke">
-    <h4>Họ tên: ${student.fullName}</h4>
-    <div class="allexams">
-      <c:forEach items="${student.examDTOS}" var="item">
-        <div class="exam">
-          <div class="detail">
-            <p style="font-size: 25px;"><strong>Kì thi: ${item.name}</strong></p>
-            <p><strong>Mã kì thi: </strong>${item.id}</p>
-            <p><strong>Trạng thái: </strong>${item.status}</p>
-            <p><strong>Thời gian tham gia: </strong>${item.time}</p>
-          </div>
-          <div class="diem d-flex  ">
-            <p class="px-2"><strong>Điểm: </strong></p>
-            <p><strong style="font-size:30px; color:red"><fmt:formatNumber value="${item.score}" type="number" /></strong></p>
+  <div class="sidebar">
+    <a href="/admin/exam">
+      <span class="fa-solid fa-laptop-code"></span>
+      <h3>Quản lý kì thi</h3>
+    </a>
 
+    <a href="/admin/user">
+      <span class="fa-regular fa-user"></span>
+      <h3>Quản lý người dùng</h3>
+    </a>
+
+    <a href="/admin/thongke/alluser/examresult" class="active">
+      <span class="fa-solid fa-chart-line"></span>
+      <h3>Thống kê</h3>
+    </a>
+  </div>
+</aside>
+<main>
+  <header>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      h3{
+        color: red;
+        padding: 20px;
+        margin-left: 100px;
+      }
+      h4, .allexams{
+        margin: 20px 0px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow:  0 0 10px rgba(0, 0, 0, 0.15);
+        padding: 20px;
+      }
+      .exam{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px #aaa;
+        padding: 20px;
+      }
+      .detail{
+        width: calc(100% - 200px);
+        word-wrap: break-word;
+      }
+      .diem{
+        width: 100px;
+        align-items: center;
+        margin: 0px 100px;
+      }
+    </style>
+  </header>
+
+  <h1>Thống kê</h1>
+  <div class="container">
+    <div class="my-2">
+      <div class="row">
+        <div class="col-10 d-flex justify-content-start">
+          <div class="input-group mb-3">
+            <!-- <input type="search" class="form-control" id="search-input" placeholder="Search.....">
+            <button class="btn btn-outline-danger" type="button" id="search-button">Search</button> -->
           </div>
         </div>
-      </c:forEach>
+        <!-- <div class="col-2 d-flex justify-content-end">
+          <button class="btn btn-danger mb-2" id="export-data">Export Data</button>
+        </div> -->
+      </div>
+    </div>
+    <div class="accordion" id="thong-ke">
+      <h4>Họ tên: ${student.fullName}</h4>
+      <div class="allexams">
+        <c:forEach items="${student.examDTOS}" var="item">
+          <div class="exam">
+            <div class="detail">
+              <p style="font-size: 25px;"><strong>Kì thi: ${item.name}</strong></p>
+              <p><strong>Mã kì thi: </strong>${item.id}</p>
+              <p><strong>Trạng thái: </strong>${item.status}</p>
+              <p><strong>Thời gian tham gia: </strong>${item.time}</p>
+            </div>
+            <div class="diem d-flex  ">
+              <p class="px-2"><strong>Điểm: </strong></p>
+              <p><strong style="font-size:30px; color:red"><fmt:formatNumber value="${item.score}" type="number" /></strong></p>
+
+            </div>
+          </div>
+        </c:forEach>
+      </div>
     </div>
   </div>
-</div>
+</main>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js'></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

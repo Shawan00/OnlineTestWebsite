@@ -20,7 +20,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="/client/img/logo.png" alt="">
+                    <img src="/client/img/logo-2.png" alt="">
                     <h2> Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <h3>Quản lý kì thi</h3>
                 </a>
 
-                <a href="/admin/user" class="active">
+                <a href="/admin/user">
                     <span class="fa-regular fa-user"></span>
                     <h3>Quản lý người dùng</h3>
                 </a>
