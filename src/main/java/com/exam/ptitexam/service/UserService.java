@@ -3,6 +3,7 @@ package com.exam.ptitexam.service;
 
 import java.util.List;
 
+import com.exam.ptitexam.domain.ExamResult;
 import org.springframework.stereotype.Service;
 
 import com.exam.ptitexam.domain.Role;
@@ -16,10 +17,14 @@ public class UserService {
 
     private final UserRepository UserRepository;
     private final RoleRepository roleRepository;
+    private final ExamResultService examResultService;
 
-    public UserService(UserRepository UserRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository UserRepository,
+                       RoleRepository roleRepository,
+                       ExamResultService examResultService){
         this.UserRepository = UserRepository;
         this.roleRepository = roleRepository;
+        this.examResultService = examResultService;
     }
 
     public List<User> getAllUser() {
@@ -35,6 +40,11 @@ public class UserService {
     }
 
     public void deleteUserById(Long id) {
+        User user = this.UserRepository.findFirstById(id);
+        List<ExamResult> examResults = this.examResultService.findByUser(user);
+        for(ExamResult examResult : examResults){
+            this.examResultService.deleteExamResultById(examResult.getId());
+        }
         this.UserRepository.deleteById(id);
     }
 
