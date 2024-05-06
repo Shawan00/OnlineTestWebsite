@@ -63,6 +63,8 @@ public class Examcontroller {
             currentExam.setDescription(exam.getDescription());
             currentExam.setStatus(exam.getStatus());
             currentExam.setNumberOfMinutes(exam.getNumberOfMinutes());
+            currentExam.setStartTime(exam.getStartTime());
+            currentExam.setEndTime(exam.getEndTime());
             this.examService.handleSaveExam(currentExam);
         }
         return "redirect:/admin/exam";

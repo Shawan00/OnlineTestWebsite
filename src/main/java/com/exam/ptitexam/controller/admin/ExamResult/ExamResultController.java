@@ -51,6 +51,16 @@ public class ExamResultController {
     @GetMapping("/doexam/{examId}")
     public String getDoExamPage (Model model, @PathVariable("examId") String examId) {
         Exam foundExam = this.examService.getExamById(examId);
+
+        if (!foundExam.isAvailableNow()) {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String startTime = foundExam.getStartTime().format(dateTimeFormatter);
+            String endTime = foundExam.getEndTime().format(dateTimeFormatter);
+            model.addAttribute("startTime", startTime);
+            model.addAttribute("endTime", endTime);
+            return "client/doExam/unavailable";
+        }
+
         List<Question> questions = this.questionService.findQuestionByExam(foundExam);
         QuestionListWrapper questionListWrapper = new QuestionListWrapper();
         questionListWrapper.setQuestions(questions);
