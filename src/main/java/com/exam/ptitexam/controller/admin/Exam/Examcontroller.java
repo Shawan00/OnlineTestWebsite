@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.exam.ptitexam.domain.Exam;
 import com.exam.ptitexam.service.ExamService;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -38,9 +39,11 @@ public class Examcontroller {
     }
 
     @PostMapping("/admin/exam/create")
-    public String postCreateexam(Model model, @ModelAttribute("newExam") Exam exam){
+    public String postCreateExam(Model model, @ModelAttribute("newExam") Exam exam, 
+                                @RequestParam("questionFile") MultipartFile file){
         
         this.examService.handleSaveExam(exam);
+        this.examService.saveQuestionsToDB(file, exam);
         
         return "redirect:/admin/exam";
     }

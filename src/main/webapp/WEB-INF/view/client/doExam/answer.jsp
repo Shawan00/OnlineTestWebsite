@@ -55,7 +55,7 @@
                     </div>
                     </p>
 
-                    <div class="form-check">
+                    <div class="form-check" style="opacity: 1 !important;">
                         <input
                                 class="form-check-input"
                                 type="radio"
@@ -64,11 +64,12 @@
                                 value="1"
                             ${question.selectedOptionIndex == 1 || question.correctOptionIndex == 1 ? 'checked' : ''}
                                 disabled
+                                style="opacity: 1 !important"
                         />
-                        <label class="form-check-label ${question.correctOptionIndex == 1 ? 'correct' : (question.selectedOptionIndex == 1 && question.correctOptionIndex != 1 ? 'incorrect' : '')}"> A. ${question.optionA}</label>
+                        <label style="opacity: 1 !important" class="form-check-label ${question.correctOptionIndex == 1 ? 'correct' : (question.selectedOptionIndex == 1 && question.correctOptionIndex != 1 ? 'incorrect' : '')}"> A. ${question.optionA}</label>
                     </div>
 
-                    <div class="form-check">
+                    <div class="form-check" style="opacity: 1 !important;">
                         <input
                                 class="form-check-input"
                                 type="radio"
@@ -77,11 +78,12 @@
                                 value="1"
                             ${question.selectedOptionIndex == 2 || question.correctOptionIndex == 2 ? 'checked' : ''}
                                 disabled
+                                style="opacity: 1 !important"
                         />
-                        <label class="form-check-label ${question.correctOptionIndex == 2 ? 'correct' : (question.selectedOptionIndex == 2 && question.correctOptionIndex != 2 ? 'incorrect' : '')}"> B. ${question.optionB}</label>
+                        <label style="opacity: 1 !important" class="form-check-label ${question.correctOptionIndex == 2 ? 'correct' : (question.selectedOptionIndex == 2 && question.correctOptionIndex != 2 ? 'incorrect' : '')}"> B. ${question.optionB}</label>
                     </div>
 
-                    <div class="form-check">
+                    <div class="form-check" style="opacity: 1 !important;">
                         <input
                                 class="form-check-input"
                                 type="radio"
@@ -90,11 +92,12 @@
                                 value="1"
                             ${question.selectedOptionIndex == 3 || question.correctOptionIndex == 3 ? 'checked' : ''}
                                 disabled
+                                style="opacity: 1 !important"
                         />
-                        <label class="form-check-label ${question.correctOptionIndex == 3 ? 'correct' : (question.selectedOptionIndex == 3 && question.correctOptionIndex != 3 ? 'incorrect' : '')}"> C. ${question.optionC}</label>
+                        <label style="opacity: 1 !important"  class="form-check-label ${question.correctOptionIndex == 3 ? 'correct' : (question.selectedOptionIndex == 3 && question.correctOptionIndex != 3 ? 'incorrect' : '')}"> C. ${question.optionC}</label>
                     </div>
 
-                    <div class="form-check">
+                    <div class="form-check" >
                         <input
                                 class="form-check-input"
                                 type="radio"
@@ -103,8 +106,9 @@
                                 value="1"
                             ${question.selectedOptionIndex == 4 || question.correctOptionIndex == 4 ? 'checked' : ''}
                                 disabled
+                                style="opacity: 1 !important"
                         />
-                        <label class="form-check-label ${question.correctOptionIndex == 4 ? 'correct' : (question.selectedOptionIndex == 4 && question.correctOptionIndex != 4 ? 'incorrect' : '')}"> D. ${question.optionD}</label>
+                        <label style="opacity: 1 !important" class="form-check-label ${question.correctOptionIndex == 4 ? 'correct' : (question.selectedOptionIndex == 4 && question.correctOptionIndex != 4 ? 'incorrect' : '')}"> D. ${question.optionD}</label>
                     </div>
 
                     <div class="answer">

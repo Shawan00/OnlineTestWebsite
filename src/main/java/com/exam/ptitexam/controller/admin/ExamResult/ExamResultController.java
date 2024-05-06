@@ -126,6 +126,29 @@ public class ExamResultController {
         return "admin/thongke/detail";
     }
 
+    @GetMapping("/thongke/student/{userId}")
+    public String getExamResultByUserPageCLient (Model model, @PathVariable("userId") long userId) {
+        User foundUser = this.userService.findFirstById(userId);
+        List<Exam> exams = this.examService.getAllExam();
+        List<ExamDTO> examDTOS = new ArrayList<>();
+        for (Exam exam : exams) {
+            List<ExamResult> examResults = this.examResultService.findListExamResultByUserAndExam(foundUser, exam);
+            for(ExamResult examResult : examResults){
+                if(exam.getId().equals(examResult.getExam().getId())){
+                    String id = exam.getId();
+                    String name = exam.getName();
+                    double score = examResult.getScore();
+                    String status = "Hoàn thành";
+                    Timestamp time = examResult.getTimeDoExam();
+                    examDTOS.add(new ExamDTO(id, name, score, status, time));
+                }
+            }
+        }
+        Student student = new Student(foundUser.getFullName(), examDTOS);
+        model.addAttribute("student", student);
+        return "client/thongke/detail";
+    }
+
     @GetMapping("/admin/thongke/alluser/examresult")
     public String getThongKePage (Model model) {
         List<ExamResultDTO> examResultDTOS = new ArrayList<>();

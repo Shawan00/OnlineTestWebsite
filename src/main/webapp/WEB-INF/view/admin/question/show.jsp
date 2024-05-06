@@ -11,17 +11,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/showQuestion.css">
+<%--    <link rel="stylesheet" href="/css/showQuestion.css">--%>
+    <link rel="stylesheet" href="/css/manageExam.css">
+
 
 </head>
 <body>
 
-<div class="container">
+<%--<div class="container">--%>
     <aside>
         <div class="top">
             <div class="logo">
                 <img src="/client/img/logo.png" alt="">
-                <h2 style="color: #ad171c;"> PTIT</h2>
+                <h2 style="color: #ad171c;"> Hệ thống trắc nghiệm</h2>
             </div>
         </div>
         <div class="sidebar">
@@ -30,7 +32,7 @@
                 <h3>Quản lý kì thi</h3>
             </a>
 
-            <a href="/admin/user" class="active">
+            <a href="/admin/user">
                 <span class="fa-regular fa-user"></span>
                 <h3>Quản lý người dùng</h3>
             </a>
@@ -43,52 +45,67 @@
     </aside>
 
     <main>
-        <div class="main-head">
-            <h1 style="display: inline-block;">Danh sách câu hỏi của bài thi</h1>
-            <a href="/admin/exam/question/create_question/${examId}" class="viewquestion">Thêm câu hỏi</a>
-        </div>
-        <div class="box-body" style="overflow: auto; height: 85vh">
-            <% int index = 0; %>
-            <c:forEach items="${questions}" var="question">
-                <% index++; %>
-                <div class="question">
-                    <div class="questionContent">
-                        <h3 style="display: inline-block;"><strong>Câu <%=index%>:</strong> ${question.questionContent}</h3>
-                        <a style="display: inline-block;" href="/admin/exam/question/update_question/${question.id}/${examId}" class="openUpdateModal" data-id="${question.id}" data-modal="modal1"><span style="margin: 0 10px;" class="fa-solid fa-pen-to-square"></span></a>
-                        <a style="display: inline-block;" href="/admin/exam/question/delete_question/${question.id}/${examId}" class="openDeleteModal" data-id="${question.id}" data-modal="modal2"><span class="fa-solid fa-xmark"></span></a>
-                    </div>
-
-                    <div class="answer">
-                        <div>
-                            <label for=""><strong>A.</strong> ${question.optionA}</label>
-                        </div>
-                        <div>
-                            <label for=""><strong>B.</strong> ${question.optionB}</label>
-                        </div>
-                        <div>
-                            <label for=""><strong>C.</strong> ${question.optionC}</label>
-                        </div>
-                        <div>
-                            <label for=""><strong>D.</strong> ${question.optionD}</label>
-                        </div>                 
-                        <div>
-                            <strong for="">Đáp án: 
-                                <c:choose>
-                                    <c:when test="${question.correctOptionIndex eq 1}">A</c:when>
-                                    <c:when test="${question.correctOptionIndex eq 2}">B</c:when>
-                                    <c:when test="${question.correctOptionIndex eq 3}">C</c:when>
-                                    <c:when test="${question.correctOptionIndex eq 4}">D</c:when>
-                                    <c:otherwise>Không xác định</c:otherwise>
-                                </c:choose>
-                            </strong>
-                        </div>
-                        
-                    </div>
-
-                    
+        <h1>Quản lý kì thi</h1>
+        <div class="content">
+            <div class="content-header">
+                <div class="box-header">
+                    <p><b>Danh sách câu hỏi của bài thi</b></p>
                 </div>
-            </c:forEach>
+                <div class = "box-add">
+                    <a href="/admin/exam/question/create_question/${examId}" class="viewquestion">
 
+                        <button>
+                            <span style="margin-right: 5px;" class="fa-solid fa-plus"></span>
+                            Thêm câu hỏi
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="box-body">
+                <% int index = 0; %>
+                <c:forEach items="${questions}" var="question">
+                    <% index++; %>
+                    <div class="question">
+                        <div class="questionContent">
+                            <h3 style="display: inline-block;"><strong>Câu <%=index%>:</strong> ${question.questionContent}</h3>
+                            <div class="action">
+                                <a style="display: inline-block;" href="/admin/exam/question/update_question/${question.id}/${examId}" class="openUpdateModal" data-id="${question.id}" data-modal="modal1"><span style="margin: 0 10px;" class="fa-solid fa-pen-to-square"></span></a>
+                                <a style="display: inline-block;" href="/admin/exam/question/delete_question/${question.id}/${examId}" class="openDeleteModal" data-id="${question.id}" data-modal="modal2"><span class="fa-solid fa-xmark"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="answer">
+                            <div>
+                                <label for=""><strong>A.</strong> ${question.optionA}</label>
+                            </div>
+                            <div>
+                                <label for=""><strong>B.</strong> ${question.optionB}</label>
+                            </div>
+                            <div>
+                                <label for=""><strong>C.</strong> ${question.optionC}</label>
+                            </div>
+                            <div>
+                                <label for=""><strong>D.</strong> ${question.optionD}</label>
+                            </div>
+                            <div>
+                                <strong for="">Đáp án:
+                                    <c:choose>
+                                        <c:when test="${question.correctOptionIndex eq 1}">A</c:when>
+                                        <c:when test="${question.correctOptionIndex eq 2}">B</c:when>
+                                        <c:when test="${question.correctOptionIndex eq 3}">C</c:when>
+                                        <c:when test="${question.correctOptionIndex eq 4}">D</c:when>
+                                        <c:otherwise>Không xác định</c:otherwise>
+                                    </c:choose>
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </c:forEach>
+
+            </div>
         </div>
     </main>
     <input type="hidden" id="examId" value="${examId}">

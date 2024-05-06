@@ -315,6 +315,19 @@ button[type="submit"]:hover {
     color: white;
 }
 
+.file-upload {
+    display: flex;
+    align-items: center;
+  }
+  
+  .file-upload label {
+    margin-right: 10px;
+  }
+  
+  .file-upload input[type="file"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
 
 
 

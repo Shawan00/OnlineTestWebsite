@@ -12,16 +12,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/manageExam.css">
-
-
+<%--    <link--%>
+<%--            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"--%>
+<%--            rel="stylesheet"--%>
+<%--            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"--%>
+<%--            crossorigin="anonymous"--%>
+<%--    />--%>
 </head>
 <body>
-    <div class="container">
+<%--    <div class="container">--%>
         <aside>
             <div class="top">
                 <div class="logo">
                     <img src="/client/img/logo.png" alt="">
-                    <h2 style="color: #ad171c;"> PTIT</h2>
+                    <h2> Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
             <div class="sidebar">
@@ -44,24 +48,23 @@
 
         <main>
             <h1>Quản lý kì thi</h1>
-
             <div class="content">
-                <div class="box-header">
-                    <p>Danh sách kì thi</p>
+                <div class="content-header">
+                    <div class="box-header">
+                        <p><b>Danh sách kì thi</b></p>
+                    </div>
+
+                    <div class="box-add">
+                        <a href="/admin/exam/create" id="openModalBtn">
+                            <button>
+                                <span style="margin-right: 5px;" class="fa-solid fa-plus"></span>
+                                Thêm mới
+                            </button>
+                        </a>
+                    </div>
                 </div>
-
-                <div class="box-add">
-                    <a href="/admin/exam/create" id="openModalBtn">
-                        <button>
-                            <span style="margin-right: 5px;" class="fa-solid fa-plus"></span> 
-                            Thêm mới
-                        </button>
-                    </a>
-
-                </div>
-
-                <div class="box-body" style="overflow: auto; height: 450px;">
-                    <table style="width: 100%;" id="examTable" >
+                <div class="box-body">
+                    <table style="width: 100%;border-bottom: #b30000 solid 2px;" id="examTable" >
                         <thead>
                             <tr>
                                 <th style="width:10%">STT</th>
@@ -193,7 +196,7 @@
             </div>
               
         </div>
-    </div>  
+<%--    </div>--%>
   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/Exam.js"></script>

@@ -18,4 +18,6 @@ public interface ExamResultRepository extends JpaRepository<ExamResult, Long> {
 
     List<ExamResult> findByUserAndExam(User user, Exam exam);
 
+    void deleteById(long id);
+
 }

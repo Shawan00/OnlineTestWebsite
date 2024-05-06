@@ -36,4 +36,8 @@ public class ExamResultService {
         return this.examResultRepository.findByUserAndExam(user, exam);
     }
 
+    public void deleteExamResultById(Long id){
+        this.examResultRepository.deleteById(id);
+    }
+
 }

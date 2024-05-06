@@ -3,12 +3,16 @@ package com.exam.ptitexam.service;
 import com.exam.ptitexam.domain.Exam;
 import com.exam.ptitexam.domain.Question;
 import com.exam.ptitexam.repository.QuestionRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
@@ -31,9 +35,14 @@ public class QuestionService {
         return this.questionRepository.findById(id);
     }
 
+    @Transactional
+    public void deleteQuestionByExam(Exam exam) {
+        this.questionRepository.deleteByExam(exam);
+    }
 
-    public Void deleteQuestionByExam(Exam exam) {
-        return this.questionRepository.deleteByExam(exam);
+    @Transactional
+    public void deleteQuestionById(long id) {
+        this.questionRepository.deleteById(id);
     }
 
     public void saveQuestion(List<Question> questions) {

@@ -11,21 +11,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/manageUser.css">
+    <link rel="stylesheet" href="/css/manageExam.css">
 
 
 </head>
 <body>
-    <div class="container">
+<%--    <div class="container">--%>
         <aside>
             <div class="top">
                 <div class="logo">
                     <img src="/client/img/logo.png" alt="">
-                    <h2 style="color: #ad171c;"> PTIT</h2>
+                    <h2> Hệ thống trắc nghiệm</h2>
                 </div>
             </div>
             <div class="sidebar">
-                <a href="/admin/exam">
+                <a href="/admin/exam" class="active">
                     <span class="fa-solid fa-laptop-code"></span>
                     <h3>Quản lý kì thi</h3>
                 </a>
@@ -43,18 +43,17 @@
         </aside>
 
         <main>
-            <h1>Quản lý người dùng</h1>
+            <h1>Quản lý kì thi</h1>
 
             <div class="content">
                 <div class="box-header">
-                    <p>Thêm mới kì thi</p>
+                    <p><b>Thêm mới kì thi</b></p>
                 </div>
-                <div class="box-body" style="overflow: auto; height: 450px;">
+                <div class="box-body">
                     <div class="modal-main">
-                        <form:form id="addExamForm" method="post" action="/admin/exam/create" modelAttribute="newExam">
+                        <form:form id="addExamForm" method="post" action="/admin/exam/create" modelAttribute="newExam" enctype="multipart/form-data">
                             
                             <div>
-                                
                                 <label>Mã kì thi:</label>
                                 <form:input type="text" path="id" />
                             </div>
@@ -93,7 +92,11 @@
                             <div id="thoiGianBox" style="display: none;">
                                 <label>Thời gian làm bài: <form:input type="number" path="numberOfMinutes"/> phút</label>
                                 
-                            </div>                            
+                            </div>      
+                            <div class="file-upload" style="margin-top: 10px; margin-bottom: 10px;">
+                                <label for="fileInput">Đề thi:</label>
+                                <input type="file" id="fileInput" name="questionFile" accept=".xls, .xlsx">
+                              </div>                      
                             <div class="form-bot">
                                 <button style="width: 100%;" type="submit">Thêm mới</button>
                             </div>
@@ -103,16 +106,10 @@
                 </div>
             </div>
 
-         
-
-            
         </main>
    
-    
-    
 
-    
-    </main>
+<%--    </main>--%>
          
     <script>
         document.getElementById('trangThai').addEventListener('change', function() {
@@ -123,6 +120,14 @@
                 thoiGianBox.style.display = 'block';
             } else {
                 thoiGianBox.style.display = 'none';
+            }
+        });
+
+        document.getElementById('addExamForm').addEventListener('submit', function(e) {
+            var fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Vui lòng chọn file câu hỏi');
+                e.preventDefault();
             }
         });
     </script>

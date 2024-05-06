@@ -133,6 +133,7 @@
                     class="btn btn-primary"
                     data-bs-toggle="modal"
                     data-bs-target="#resultModal"
+                    id="submitExam"
             >
               Nộp bài
             </button>
