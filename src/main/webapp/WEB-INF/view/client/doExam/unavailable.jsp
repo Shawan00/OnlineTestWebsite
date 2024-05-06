@@ -16,7 +16,7 @@
             <h1>Chưa đến thời gian dự thi!</h1>
             <p>Bạn chưa thể làm bài thi vào lúc này do chưa đến thời gian dự thi!</p>
             <p>Vui lòng làm bài thi khác hoặc liên hệ với giảng viên.</p>
-            <p>Kỳ thi bắt đầu vào ${startTime} và kết thúc vào ${endTime}</p>
+            <p>Bài thi bắt đầu vào lúc ${startTime} và kết thúc vào lúc ${endTime}</p>
             <a href="/">Trở về</a>
         </div>
     </div>

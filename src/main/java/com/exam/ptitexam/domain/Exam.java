@@ -80,6 +80,7 @@ public class Exam {
     }
 
     public boolean isAvailableNow() {
+        if (this.status.equals("Tự do")) return true;
         LocalDateTime currentTime = LocalDateTime.now();
         return currentTime.isAfter(this.startTime) && currentTime.isBefore(this.endTime);
     }
