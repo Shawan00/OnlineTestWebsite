@@ -1,7 +1,7 @@
 var numberOfMinutes = document.getElementById("numberOfMinutes").value;
 var examStatus = document.getElementById("examStatus").value;
 console.log(numberOfMinutes + " " + examStatus);
-if (examStatus == "Thời gian"){
+if (true){
 
     const endTime = new Date(Date.now() + parseInt(numberOfMinutes) * 60 * 1000 + 2000);
 

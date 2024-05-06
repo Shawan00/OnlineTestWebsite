@@ -224,14 +224,6 @@
     });
     var examStatus = document.getElementById("examStatus").value;
     console.log(examStatus);
-    function hienThiThoiGian() {
-      var clock = document.getElementById("clock1");
-      if (examStatus == "Tự do") {
-          clock.style.display = 'none';
-          console.log('tudo');
-      }
-    }
-    hienThiThoiGian();
   </script>
 
 </body>
