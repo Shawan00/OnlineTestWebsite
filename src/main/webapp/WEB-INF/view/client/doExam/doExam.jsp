@@ -35,6 +35,9 @@
             <h4 class="h-100 d-flex justify-content-center align-items-center text-center">
                 Thí sinh: ${sessionScope.fullName}
             </h4>
+            <h4>
+                Kì thi: ${exam.name}
+            </h4>
             <h4 id="clock1"><i class="fas fa-clock"></i> <span id="countdown"></span></h4>
             <button
                     type="submit"

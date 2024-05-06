@@ -41,6 +41,10 @@
                     <span class="fa-solid fa-chart-line"></span>
                     <h3>Thống kê</h3>
                 </a>
+                <a href="/logout">
+                    <span class="fa-solid fa-right-from-bracket"></span>
+                    <h3>Đăng xuất</h3>
+                </a>
             </div>
         </aside>
 

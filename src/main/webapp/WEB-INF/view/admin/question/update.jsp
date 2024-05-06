@@ -40,11 +40,15 @@
                     <span class="fa-solid fa-chart-line"></span>
                     <h3>Thống kê</h3>
                 </a>
+                <a href="/logout">
+                    <span class="fa-solid fa-right-from-bracket"></span>
+                    <h3>Đăng xuất</h3>
+                </a>
             </div>
         </aside>
 
         <main>
-            <h1>Quản lý người dùng</h1>
+            <h1>Quản lý câu hỏi</h1>
 
             <div class="content">
                 <div class="box-header">

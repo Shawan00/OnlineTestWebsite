@@ -1,32 +1,33 @@
-<!DOCTYPE html>
-<html lang="id" dir="ltr">
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<html>
 <head>
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-     <meta name="description" content="" />
-     <meta name="author" content="" />
-
-     <!-- Title -->
-     <title>Sorry, This Page Can&#39;t Be Accessed</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
+<body class="hold-transition theme-primary bg-img" style="background-image: url(/client/img/bg-5.jpg)">
+<section class="error-page h-p100">
+    <div class="container h-p100">
+        <div class="row h-p100 align-items-center justify-content-center text-center">
+            <div class="col-lg-7 col-md-10 col-12">
+                <div class="rounded30 p-50">
+                    <img src="/client/img/403.png" class="mw-100" alt="" />
+                    <h1>403</h1>
+                    <h3>Bạn không có quyền để thực hiện chức năng này!</h3>
+                    <div class="my-30"><a href="/" class="btn btn-danger">Quay lại trang chủ</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<body class="bg-white text-white py-5">
-     <div class="container py-5">
-          <div class="row text-body">
-               <div class="col-md-2 text-center">
-                    <p><i class="fa fa-exclamation-triangle fa-5x"></i><br/>Status Code: 403</p>
-               </div>
-               <div class="col-md-10">
-                    <h3>OPPSSS!!!! Sorry...</h3>
-                    <p>Bạn không có quyền truy cập nguồn tài nguyên này<br/>Hãy quay lại trang chủ.</p>
-                    <a class="btn btn-success" href="/">Trang chủ</a>
-               </div>
-          </div>
-     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
